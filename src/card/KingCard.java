@@ -93,7 +93,7 @@ public class KingCard extends MonsterCard {
 	public boolean isEffectable() {
 		// TODO Auto-generated method stub
 		if (game.getTurnCount() != this.getLastUsedTurn()) {
-			if (game.getCur().getMonHand().size() < 3) {
+			if ((game.getCur().getMonHand().size() < game.getOpp().getMonHand().size()) && (game.getCur().getMonHand().size() < 3)) {
 				return true;			
 			}
 		}
