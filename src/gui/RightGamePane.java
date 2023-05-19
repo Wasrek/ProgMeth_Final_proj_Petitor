@@ -9,8 +9,11 @@ import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.geometry.Pos;
 import javafx.scene.control.Button;
+import javafx.scene.control.ContentDisplay;
 import javafx.scene.control.Label;
 import javafx.scene.control.Labeled;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
@@ -49,14 +52,36 @@ public class RightGamePane extends VBox{
         buttonHBox.setSpacing(20);
         buttonHBox.setAlignment(javafx.geometry.Pos.CENTER);
         
-        Button pauseBtn = new Button("Pause");
+        
+        
+        ImageView pauseView = new ImageView(new Image(getClass().getResourceAsStream("../img/pause.png")));
+        pauseView.setFitWidth(25);
+        pauseView.setFitHeight(25);
+        pauseView.setPreserveRatio(false);
+        
+        Button pauseBtn = new Button();
+        pauseBtn.setGraphic(pauseView);
+        pauseBtn.setPrefSize(25, 25);
+        pauseBtn.setStyle("-fx-background-color: transparent; " +
+                "-fx-background-radius: 25em; " +
+                "-fx-min-width: 25px; " +
+                "-fx-min-height: 25px; " +
+                "-fx-max-width: 25px; " +
+                "-fx-max-height: 25px;");
         pauseBtn.setAlignment(Pos.TOP_RIGHT);
         pauseBtn.setOnAction(event -> {
         	main.showPauseScene();
         });
+        HBox pauseBox = new HBox();
+        pauseBox.setPrefSize(25, 25);
+        pauseBox.getChildren().add(pauseBtn);
+        pauseBox.setAlignment(Pos.TOP_RIGHT);
+        
         this.monInfo = new InfoPane();
         
-        this.getChildren().addAll(PhText, PriceText, buttonHBox, pauseBtn, monInfo);
+        
+        
+        this.getChildren().addAll(pauseBox, PhText, PriceText, buttonHBox,  monInfo);
         
 	}
 	
@@ -77,8 +102,8 @@ public class RightGamePane extends VBox{
 	}
 
 	public void updateRightPane() {
-		((Labeled) this.getChildren().get(1)).setText("Price "+Integer.toString(GameLogic.getInstance().getSumPrice()));
-		((Labeled) this.getChildren().get(0)).setText("Phrase "+Integer.toString(GameLogic.getInstance().getNowPhrase()));
+		((Labeled) this.getChildren().get(2)).setText("Price "+Integer.toString(GameLogic.getInstance().getSumPrice()));
+		((Labeled) this.getChildren().get(1)).setText("Phrase "+Integer.toString(GameLogic.getInstance().getNowPhrase()));
 		chooseButton.setText(GameLogic.getInstance().getPhraseText());
 	}
 
@@ -86,6 +111,7 @@ public class RightGamePane extends VBox{
 		System.out.println("1");
 		BaseCard card  = ((GameFieldPane) main.getGameRoot().getChildren().get(1)).getLastClick();
 		System.out.println("0");
+		this.monInfo.rnImgLB(card.getImg());
 		this.monInfo.rnNameLB("Name : " + card.getName());
 		this.monInfo.rnPriceLB("Price : " + card.getPrice());
 		if (card instanceof MonsterCard) {

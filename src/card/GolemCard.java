@@ -87,8 +87,7 @@ public class GolemCard extends MonsterCard {
 	@Override
 	public boolean isEffectable() {
 		// TODO Auto-generated method stub
-		if (game.getTurnCount() != this.getLastUsedTurn()) return true;
-		return true;
+		return (game.getTurnCount() != this.getLastUsedTurn());
 	}
 	
 	public Image getImg() {

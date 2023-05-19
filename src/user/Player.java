@@ -84,7 +84,7 @@ public class Player implements Buyable{
 				}else {
 					GameLogic.getInstance().getCur().getSpHand().add(cd);
 					GameLogic.getInstance().getSpMarket().remove(cd);
-					this.lastBuyM = GameLogic.getInstance().getTurnCount();
+					this.lastBuyS = GameLogic.getInstance().getTurnCount();
 				}
 			}	
 		}

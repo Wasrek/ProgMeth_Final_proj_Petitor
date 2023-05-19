@@ -15,7 +15,8 @@ public class VitaminCard extends SpellCard{
 	public void useEffect() {
 		// TODO Auto-generated method stub
 		if (this.isEffectable()) {
-			((MonsterCard) game.getCur().getMonHand().get(0)).setAtkVal(((MonsterCard) game.getCur().getMonHand().get(0)).getAtkVal() + 300);
+			BaseCard effectedCard = game.getnowClick().get(1);
+			((MonsterCard) effectedCard).setAtkVal(((MonsterCard) effectedCard).getAtkVal() + 300);
 			game.getCur().getSpHand().remove(this);
 		}
 	}

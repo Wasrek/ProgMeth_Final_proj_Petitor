@@ -60,7 +60,6 @@ public class BirdCard extends MonsterCard {
 					game.getOpp().getMonHand().remove(card);
 				}
 			}
-			this.setAtkVal(800);
 		}
 	}
 
@@ -81,10 +80,11 @@ public class BirdCard extends MonsterCard {
 		// TODO Auto-generated method stub
 		ranNum = new Random().nextInt(100);
 		if (this.isEffectable()) {
-			System.out.println(this.toString() + this.performEffect());
+			System.out.println(this.toString() + this.performEffect() + this.getLastUsedTurn());
 			this.setLastUsedTurn(game.getTurnCount());
-			if (ranNum > 89) {
-				this.setAtkVal(1600);
+			System.out.println(this.toString() + this.performEffect() + this.getLastUsedTurn());
+			if (ranNum > 50) {
+				this.setAtkVal(this.getAtkVal() + 200);
 			}
 		}
 	}
@@ -92,8 +92,7 @@ public class BirdCard extends MonsterCard {
 	@Override
 	public boolean isEffectable() {
 		// TODO Auto-generated method stub
-		if (game.getTurnCount() != this.getLastUsedTurn()) return true;
-		return true;
+		return (game.getTurnCount() != this.getLastUsedTurn());
 	}
 
 	@Override

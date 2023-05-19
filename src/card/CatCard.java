@@ -45,8 +45,7 @@ public class CatCard extends MonsterCard {
 	@Override
 	public boolean isEffectable() {
 		// TODO Auto-generated method stub
-		if (game.getTurnCount() != this.getLastUsedTurn()) return true;
-		return true;
+		return (game.getTurnCount() != this.getLastUsedTurn());
 	}
 
 	@Override
