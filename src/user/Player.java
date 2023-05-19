@@ -81,6 +81,7 @@ public class Player implements Buyable{
 					GameLogic.getInstance().getCur().getMonHand().add(cd);
 					GameLogic.getInstance().getMonMarket().remove(cd);
 					this.lastBuyM = GameLogic.getInstance().getTurnCount();
+					((MonsterCard) cd).setSummonedTurn(GameLogic.getInstance().getTurnCount());
 				}else {
 					GameLogic.getInstance().getCur().getSpHand().add(cd);
 					GameLogic.getInstance().getSpMarket().remove(cd);

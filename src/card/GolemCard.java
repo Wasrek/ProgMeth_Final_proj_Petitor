@@ -61,7 +61,7 @@ public class GolemCard extends MonsterCard {
 	@Override
 	public boolean isAttackable(BaseCard card) {
 		// TODO Auto-generated method stub
-		return (this.getStatus() && (this.getLastAtk() != game.getTurnCount()));
+		return (this.getStatus() && (this.getSummonedTurn() != game.getTurnCount()) && (this.getLastAtk() != game.getTurnCount()) );
 	}
 
 	@Override

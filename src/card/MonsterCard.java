@@ -7,7 +7,7 @@ import logic.GameLogic;
 public abstract class MonsterCard extends BaseCard implements Attackable, Guardable{
 	private int DefVal, AtkVal;
 	private boolean Status;
-	private int lastUsedTurn, lastAtk;
+	private int lastUsedTurn, lastAtk , summonedTurn;
 	
 	public MonsterCard(CardName name, int price, int AtkVal, int DefVal, boolean Status) {
 		super(CardType.MONSTER, name, price, 0);
@@ -16,6 +16,7 @@ public abstract class MonsterCard extends BaseCard implements Attackable, Guarda
 		this.Status = Status;
 		this.lastUsedTurn = -1;
 		this.lastAtk = -1;
+		this.summonedTurn = -1;
 		// TODO Auto-generated constructor stub
 	}
 	
@@ -73,6 +74,16 @@ public abstract class MonsterCard extends BaseCard implements Attackable, Guarda
 	
 	public void setLastAtk(int lastAtk) {
 		this.lastAtk = lastAtk;
+	}
+
+
+	public int getSummonedTurn() {
+		return summonedTurn;
+	}
+
+
+	public void setSummonedTurn(int summonedTurn) {
+		this.summonedTurn = summonedTurn;
 	}
 	
 	// atk, def, status, effect

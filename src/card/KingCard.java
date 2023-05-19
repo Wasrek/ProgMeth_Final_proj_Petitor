@@ -60,7 +60,7 @@ public class KingCard extends MonsterCard {
 	@Override
 	public boolean isAttackable(BaseCard card) {
 		// TODO Auto-generated method stub
-		if (this.getStatus() && (this.getLastAtk() != game.getTurnCount())) {
+		if (this.getStatus() && (this.getSummonedTurn() != game.getTurnCount()) && (this.getLastAtk() != game.getTurnCount())) {
 			if (game.getTurnCount() >= this.getLastAtk() + 4) {
 				return true;						
 			}			
@@ -84,6 +84,7 @@ public class KingCard extends MonsterCard {
 			System.out.println(this.toString() + this.performEffect());
 			this.setLastUsedTurn(game.getTurnCount());
 			game.getCur().getMonHand().add(game.getnowClick().get(1));
+			((MonsterCard) game.getnowClick().get(1)).setSummonedTurn(GameLogic.getInstance().getTurnCount());
 			game.getOpp().getMonHand().remove(game.getnowClick().get(1));
 		}
 	}
