@@ -199,17 +199,6 @@ public class main extends Application {
 		bgImg.setFitHeight(2000);
 		bgPane.getChildren().add(bgImg);
 		
-//		Platform.runLater(
-//				  () -> {
-//					  	PathTransition pathTransition = new PathTransition();
-//						pathTransition.setDuration(Duration.minutes(1));
-//						pathTransition.setNode(bgImg);
-//						pathTransition.setPath(new Circle(1000, 700, 50));
-//						pathTransition.setCycleCount(Animation.INDEFINITE);
-//						pathTransition.play();
-//				  }
-//				);
-		
 		gameRoot = new HBox();
 //		BorderPane gamePane = new BorderPane();
 		LeftGamePane leftPane = new LeftGamePane();

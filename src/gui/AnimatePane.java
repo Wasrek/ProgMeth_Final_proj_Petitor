@@ -21,10 +21,13 @@ import javafx.scene.text.Font;
 import javafx.util.Duration;
 import logic.GameLogic;
 
+/**
+ * @author Petitor
+ *
+ */
 public class AnimatePane extends StackPane{
 	public AnimatePane(){
 		super();
-//		this.setBackground(new Background(new BackgroundFill(Color.RED, new CornerRadii(20), getInsets())));
 		this.setMinHeight(170);
 		VBox vBox = new VBox();
 		vBox.setPadding(new Insets(5,0,0,0));
