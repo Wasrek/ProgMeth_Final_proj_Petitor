@@ -136,7 +136,7 @@ public class main extends Application {
 		bgImg.setFitHeight(2000);
 		menuRoot.getChildren().add(bgImg);
 		PathTransition pathTransition = new PathTransition();
-		pathTransition.setDuration(Duration.minutes(1));
+		pathTransition.setDuration(Duration.minutes(0.75));
 		pathTransition.setNode(bgImg);
 		pathTransition.setPath(new Circle(1000, 700, 50));
 		pathTransition.setCycleCount(Animation.INDEFINITE);

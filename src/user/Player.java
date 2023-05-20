@@ -88,7 +88,8 @@ public class Player implements Buyable{
 					GameLogic.getInstance().getSpMarket().remove(cd);
 					this.lastBuyS = GameLogic.getInstance().getTurnCount();
 				}
-			}	
+			}
+			GameLogic.getInstance().getnowClick().clear();
 		}
 	}
 
@@ -109,11 +110,11 @@ public class Player implements Buyable{
 			}
 		}
 		if((moncnt + GameLogic.getInstance().getCur().getMonHand().size()) > 3) {
-			GameLogic.getInstance().updTextani("Your deck is full");
+			GameLogic.getInstance().updTextani("Your field is full");
 			return false;
 		}
 		if(Spcnt + GameLogic.getInstance().getCur().getSpHand().size() >3) {
-			GameLogic.getInstance().updTextani("Your deck is full");
+			GameLogic.getInstance().updTextani("Your field is full");
 			return false;
 		}
 		return true;

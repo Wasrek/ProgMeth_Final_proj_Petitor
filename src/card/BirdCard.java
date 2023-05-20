@@ -68,6 +68,13 @@ public class BirdCard extends MonsterCard {
 	@Override
 	public boolean isAttackable(BaseCard card) {
 		// TODO Auto-generated method stub
+		if(!this.getStatus()) {
+			game.updTextani("Not attacker!");
+		}else if(this.getSummonedTurn() == game.getTurnCount()) {
+			game.updTextani("Try next turn");
+		}else if(this.getLastAtk() == game.getTurnCount()){
+			game.updTextani("Already attack!");
+		}
 		return (this.getStatus() && (this.getSummonedTurn() != game.getTurnCount()) && (this.getLastAtk() != game.getTurnCount()) );
 	}
 
@@ -88,6 +95,9 @@ public class BirdCard extends MonsterCard {
 			System.out.println(this.toString() + this.performEffect() + this.getLastUsedTurn());
 			if (ranNum > 50) {
 				this.setAtkVal(this.getAtkVal() + 200);
+				game.updUseEffani(this.performEffect()+" Success!");
+			}else {
+				game.updUseEffani(this.performEffect()+" Bad luck TT");
 			}
 		}
 	}

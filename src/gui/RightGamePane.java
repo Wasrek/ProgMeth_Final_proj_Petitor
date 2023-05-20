@@ -108,6 +108,7 @@ public class RightGamePane extends VBox{
 	private void chooseClicked(MouseEvent e) {
 		SoundManager.playSound("audio/select-click.mp3");
 		int nPhrase = GameLogic.getInstance().getNowPhrase();
+		if(GameLogic.getInstance().getnowClick().size()==0) return ;
 		if(nPhrase == 1) {
 			if(GameLogic.getInstance().getCur().isBuyable(GameLogic.getInstance().getnowClick())) {
 				System.out.println("Buy");

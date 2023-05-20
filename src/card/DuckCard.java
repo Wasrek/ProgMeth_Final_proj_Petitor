@@ -60,6 +60,13 @@ public class DuckCard extends MonsterCard {
 	@Override
 	public boolean isAttackable(BaseCard card) {
 		// TODO Auto-generated method stub
+		if(!this.getStatus()) {
+			game.updTextani("Not attacker!");
+		}else if(this.getSummonedTurn() == game.getTurnCount()) {
+			game.updTextani("Try next turn");
+		}else if(this.getLastAtk() == game.getTurnCount()){
+			game.updTextani("Already attack!");
+		}
 		return (this.getStatus() && (this.getSummonedTurn() != game.getTurnCount()) && (this.getLastAtk() != game.getTurnCount()) );
 	}
 
