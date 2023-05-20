@@ -3,15 +3,24 @@ package card;
 import javafx.scene.image.Image;
 import logic.CardName;
 
+/**
+ * @author Wishmeluck
+ *
+ */
 public class TornadoCard extends SpellCard{
 
+	/**
+	 * Constructor for Tornado card
+	 */
 	public TornadoCard() {
 		super(CardName.TORNADO, 6);
 		this.setEffType(6);
 		// TODO Auto-generated constructor stub
 	}
-
-	// fix
+	
+	/**
+	 *	Method use to call effect
+	 */
 	@Override
 	public void useEffect() {
 		// TODO Auto-generated method stub
@@ -22,17 +31,26 @@ public class TornadoCard extends SpellCard{
 		}
 	}
 
+	/**
+	 *@return boolean that this spell can use effect or not
+	 */
 	@Override
 	public boolean isEffectable() {
 		// TODO Auto-generated method stub
 		return true;
 	}
-
+	
+	/**
+	 * 	@return	String of card's name
+	 */
 	@Override
 	public String toString() {
 		return "Tornado";
 	}
 	
+	/**
+	 *	@return	spell's image
+	 */
 	public Image getImg() {
 		// TODO Auto-generated method stub
 		return (new Image(getClass().getResourceAsStream("../img/Tornado.jpg")));

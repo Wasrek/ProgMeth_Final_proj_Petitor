@@ -5,20 +5,32 @@ import java.util.Collections;
 import javafx.scene.image.Image;
 import logic.CardName;
 
+/**
+ * @author Wishmeluck
+ *
+ */
 public class NewWorldCard extends SpellCard{
 
-
+	/**
+	 * Constructor for NewWorldCard
+	 */
 	public NewWorldCard() {
 		super(CardName.NWORLD, 2);
 		this.setEffType(3);
 		// TODO Auto-generated constructor stub
 	}
-
+	
+	/**
+	 * 	@return	String of card's name
+	 */
 	@Override
 	public String toString() {
 		return "New World (Clear market)";
 	}
 	
+	/**
+	 *	Method use to call effect
+	 */
 	@Override
 	public void useEffect() {
 		// TODO Auto-generated method stub
@@ -46,12 +58,18 @@ public class NewWorldCard extends SpellCard{
 		}
 	}
 
+	/**
+	 *@return boolean that this spell can use effect or not
+	 */
 	@Override
 	public boolean isEffectable() {
 		// TODO Auto-generated method stub
 		return true;
 	}
 	
+	/**
+	 *	@return	spell's image
+	 */
 	public Image getImg() {
 		// TODO Auto-generated method stub
 		return (new Image(getClass().getResourceAsStream("../img/NewWorld.jpg")));

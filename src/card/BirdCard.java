@@ -7,29 +7,54 @@ import logic.CardName;
 import logic.CardType;
 import logic.GameLogic;
 
+
+/**
+ * @author Wishmeluck
+ *
+ */
+
 public class BirdCard extends MonsterCard {
+	/**
+	 * 	Shorten the code
+	 */
 	private GameLogic game = GameLogic.getInstance();
+	/**
+	 * Store the random number using for Bird's effect
+	 */
 	private int ranNum;
 	
 	
+	/**
+	 * 	Constructor for BirdCard
+	 */
 	public BirdCard() {
 		super(CardName.BIRD, 2, 800, 800, true);
 		this.setEffType(1);
 		// TODO Auto-generated constructor stub
 	}
 
+	/**
+	 *	@return	effect's detail in String
+	 */
 	@Override
 	public String performEffect() {
 		// TODO Auto-generated method stub
 		return "Nok Sorn Khon (50% chance power-up)";
 	}
 
+	/**
+	 * 	@return	String of effect's name
+	 */
 	@Override
 	public String toString() {
 		// TODO Auto-generated method stub
 		return "Vihok";
 	}
 
+	/**
+	 *	Method to attack other monsters
+	 *	@param	card card to be attacked
+	 */
 	@Override
 	public void attack(BaseCard card) {
 		// TODO Auto-generated method stub
@@ -65,6 +90,10 @@ public class BirdCard extends MonsterCard {
 		}
 	}
 
+	/**
+	 * @param card	card to be checked
+	 * @return	boolean that card can be attacked or not
+	 */
 	@Override
 	public boolean isAttackable(BaseCard card) {
 		// TODO Auto-generated method stub
@@ -79,12 +108,19 @@ public class BirdCard extends MonsterCard {
 	}
 
 
+	/**
+	 *  @param	card	card to be checked
+	 *	@return	boolean that monster can guard card or not.
+	 */
 	@Override
 	public boolean isGuardable(BaseCard card) {
 		// TODO Auto-generated method stub
 		return ((this.getDefVal() >= ((MonsterCard) card).getAtkVal()));
 	}
 
+	/**
+	 *	Method use to call effect
+	 */
 	@Override
 	public void useEffect() {
 		// TODO Auto-generated method stub
@@ -102,12 +138,18 @@ public class BirdCard extends MonsterCard {
 		}
 	}
 
+	/**
+	 *@return boolean that this monster can use effect or not
+	 */
 	@Override
 	public boolean isEffectable() {
 		// TODO Auto-generated method stub
 		return (game.getTurnCount() != this.getLastUsedTurn());
 	}
 
+	/**
+	 *	@return	monster's image
+	 */
 	@Override
 	public Image getImg() {
 		// TODO Auto-generated method stub

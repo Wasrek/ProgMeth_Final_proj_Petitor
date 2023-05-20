@@ -45,7 +45,7 @@ import sound.SoundManager;
 
 /**
  * The main class of the game
- * @author Petitor
+ * @author Wishmeluck
  *
  */
 public class main extends Application {

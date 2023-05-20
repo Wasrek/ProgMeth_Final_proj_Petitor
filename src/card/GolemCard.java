@@ -5,27 +5,47 @@ import logic.CardName;
 import logic.CardType;
 import logic.GameLogic;
 
+/**
+ * @author Wishmeluck
+ *
+ */
 public class GolemCard extends MonsterCard {
+	/**
+	 * Shorten the code
+	 */
 	private GameLogic game = GameLogic.getInstance();
 
+	/**
+	 * Constructor for GolemCard
+	 */
 	public GolemCard() {
 		super(CardName.GOLEM, 4, 800, 1300, true);
 		this.setEffType(2);
 		// TODO Auto-generated constructor stub
 	}
 
+	/**
+	 * @return	effect's detail in String
+	 */
 	@Override
 	public String performEffect() {
 		// TODO Auto-generated method stub
 		return "Mha Mhoo (Power-up teammates defend)";
 	}
-
+	
+	/**
+	 * 	@return	String of effect's name
+	 */
 	@Override
 	public String toString() {
 		// TODO Auto-generated method stub
 		return "Golem";
 	}
-
+	
+	/**
+	 *	Method to attack other monsters
+	 *	@param	card card to be attacked
+	 */
 	@Override
 	public void attack(BaseCard card) {
 		// TODO Auto-generated method stub
@@ -59,7 +79,11 @@ public class GolemCard extends MonsterCard {
 			}		
 		}
 	}
-
+	
+	/**
+	 * @param card	card to be checked
+	 * @return	boolean that card can be attacked or not
+	 */
 	@Override
 	public boolean isAttackable(BaseCard card) {
 		// TODO Auto-generated method stub
@@ -72,13 +96,20 @@ public class GolemCard extends MonsterCard {
 		}
 		return (this.getStatus() && (this.getSummonedTurn() != game.getTurnCount()) && (this.getLastAtk() != game.getTurnCount()) );
 	}
-
+	
+	/**
+	 * @param 	card	card to be checked
+	 *	@return	boolean that this monster can guard card or not.
+	 */
 	@Override
 	public boolean isGuardable(BaseCard card) {
 		// TODO Auto-generated method stub
 		return ((this.getDefVal() >= ((MonsterCard) card).getAtkVal()));
 	}
-
+	
+	/**
+	 *	Method use to call effect
+	 */
 	@Override
 	public void useEffect() {
 		// TODO Auto-generated method stub
@@ -94,12 +125,18 @@ public class GolemCard extends MonsterCard {
 		}
 	}
 
+	/**
+	 *@return boolean that this monster can use effect or not
+	 */
 	@Override
 	public boolean isEffectable() {
 		// TODO Auto-generated method stub
 		return (game.getTurnCount() != this.getLastUsedTurn());
 	}
 	
+	/**
+	 *	@return	monster's image
+	 */
 	public Image getImg() {
 		// TODO Auto-generated method stub
 		if(this.getStatus()) return (new Image(getClass().getResourceAsStream("../img/GolemAtk.png")));

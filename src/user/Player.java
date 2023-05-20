@@ -10,10 +10,41 @@ import card.SpellCard;
 import javafx.application.Platform;
 import logic.GameLogic;
 
+/**
+ * @author Wishmeluck
+ *
+ */
 public class Player implements Buyable{
+	/**
+	 * @param index	player's id
+	 */
+	/**
+	 * @param money	player's money
+	 */
+	/**
+	 * @param hp	player's life point
+	 */
+	/**
+	 * @param lastBuyS	player's last buy spell card
+	 */
+	/**
+	 * @param lastBuyM	player's last buy monster card
+	 */
 	private int index, money , hp, lastBuyS=0, lastBuyM=0;
+    /**
+     * @param MonHand	player's monster cards
+     */
+    /**
+     * @param SpHand	player's spell cards
+     */
     private ArrayList<BaseCard> MonHand, SpHand;
 	
+    /**
+     * Constructor for player
+     * @param index	player's id
+     * @param money	player's money
+     * @param hp	player' life point
+     */
     public Player(int index, int money, int hp) {
     	this.index = index;
     	this.setMoney(money);
@@ -22,10 +53,18 @@ public class Player implements Buyable{
     	this.setSpHand(new ArrayList<>());
     }
     
+	/**
+	 * Getter for player's life point
+	 * @return	player 's life point
+	 */
 	public int getHp() {
 		return hp;
 	}
 
+	/**
+	 * Setter for player's life point
+	 * @param hp	player's life point
+	 */
 	public void setHp(int hp) {
 		if (hp <= 0 ) {
 			this.hp = 0;
@@ -36,39 +75,74 @@ public class Player implements Buyable{
 		}
 	}
 
+	/**
+	 * Setter for plsyer's monster cards
+	 * @param monHand	player's monster cards
+	 */
 	public void setMonHand(ArrayList<BaseCard> monHand) {
 		MonHand = monHand;
 	}
 
+	/**
+	 * Setter for player's spell cards
+	 * @param spHand	player's spell cards
+	 */
 	public void setSpHand(ArrayList<BaseCard> spHand) {
 		SpHand = spHand;
 	}
 
 
+	/**
+	 * Getter for player's monster cards
+	 * @return	player's spell cards
+	 */
 	public ArrayList<BaseCard> getMonHand() {
 		return MonHand;
 	}
 
+	/**
+	 * Getter for player's spell cards
+	 * @return	player's spell cards
+	 */
 	public ArrayList<BaseCard> getSpHand() {
 		return SpHand;
 	}
 
+	/**
+	 * Getter for player's id
+	 * @return	player's id
+	 */
 	public int getIndex() {
 		return index;
 	}
 
+	/**
+	 * Getter for player's money
+	 * @return	player's money
+	 */
 	public int getMoney() {
 		return money;
 	}
 
+	/**
+	 * Setter for player's money
+	 * @param player's money
+	 */
 	public void setMoney(int money) {
 		this.money = Math.max(money, 0);
 	}
 	
+	/**
+	 *	@return	player's name
+	 */
 	public String toString() {
 		return "Player " + (this.getIndex()+1);
 	}
 
+	/**
+	 * 	Method to let player buy cards from the market in buy phrase
+	 *	@param buyCards	list that player choose to buy
+	 */
 	@Override
 	public void buy(ArrayList<BaseCard> buyCards) {
 		// TODO Auto-generated method stub
@@ -93,6 +167,10 @@ public class Player implements Buyable{
 		}
 	}
 
+	/**
+	 * 	@param buyCards	list that player choose to buy
+	 *	@return boolean that this player can buy those cards or not
+	 */
 	public boolean isBuyable(ArrayList<BaseCard> buyCards) {
 		// TODO Auto-generated method stub		
 		if(GameLogic.getInstance().getSumPrice() > GameLogic.getInstance().getCur().getMoney()) {

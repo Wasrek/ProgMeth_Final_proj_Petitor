@@ -6,7 +6,7 @@ import logic.CardType;
 
 /**
  * The base abstract class of all cards
- * @author Petitor
+ * @author Wishmeluck
  *
  */
 public abstract class BaseCard implements UseEffectAble{

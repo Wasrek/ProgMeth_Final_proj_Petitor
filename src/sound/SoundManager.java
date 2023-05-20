@@ -5,6 +5,7 @@ import javafx.scene.media.AudioClip;
 
 /**
  * Sound Manager
+ * @author Wishmeluck
  */
 public class SoundManager {
 	/**
@@ -16,6 +17,7 @@ public class SoundManager {
 	 * Set Current Background Music With Configured Sound Volume
 	 * 
 	 * @param url Background Music URL
+	 * +
 	 */
 	public static void setCurrentBGM(String url) {
 		if(currentBGM != null) {

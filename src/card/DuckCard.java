@@ -5,27 +5,47 @@ import logic.CardName;
 import logic.CardType;
 import logic.GameLogic;
 
+/**
+ * @author Wishmeluck
+ *
+ */
 public class DuckCard extends MonsterCard {
+	/**
+	 * Shorten the code
+	 */
 	private GameLogic game = GameLogic.getInstance();
 
+	/**
+	 * Constructor for DuckCard
+	 */
 	public DuckCard() {
 		super(CardName.DUCK, 8, 1600, 1000, true);
 		this.setEffType(1);
 		// TODO Auto-generated constructor stub
 	}
 
+	/**
+	 * @return	effect's detail in String
+	 */
 	@Override
 	public String performEffect() {
 		// TODO Auto-generated method stub
 		return "Sacred Wave (Power-up team attack)";
 	}
-
+	
+	/**
+	 * 	@return	String of effect's name
+	 */
 	@Override
 	public String toString() {
 		// TODO Auto-generated method stub
 		return "Garbbi";
 	}
-
+	
+	/**
+	 *	Method to attack other monsters
+	 *	@param	card card to be attacked
+	 */
 	@Override
 	public void attack(BaseCard card) {
 		// TODO Auto-generated method stub
@@ -56,7 +76,11 @@ public class DuckCard extends MonsterCard {
 			}
 		}
 	}
-
+	
+	/**
+	 * @param card	card to be checked
+	 * @return	boolean that card can be attacked or not
+	 */
 	@Override
 	public boolean isAttackable(BaseCard card) {
 		// TODO Auto-generated method stub
@@ -69,12 +93,20 @@ public class DuckCard extends MonsterCard {
 		}
 		return (this.getStatus() && (this.getSummonedTurn() != game.getTurnCount()) && (this.getLastAtk() != game.getTurnCount()) );
 	}
-
+	
+	/**
+	 * @param 	card	card to be checked
+	 *	@return	boolean that this monster can guard card or not.
+	 */
 	@Override
 	public boolean isGuardable(BaseCard card) {
 		// TODO Auto-generated method stub
 		return ((this.getDefVal() >= ((MonsterCard) card).getAtkVal()));
 	}
+	
+	/**
+	 *	Method use to call effect
+	 */
 	@Override
 	public void useEffect() {
 		// TODO Auto-generated method stub
@@ -89,6 +121,9 @@ public class DuckCard extends MonsterCard {
 
 	}
 
+	/**
+	 *@return boolean that this monster can use effect or not
+	 */
 	@Override
 	public boolean isEffectable() {
 		// TODO Auto-generated method stub
@@ -99,7 +134,10 @@ public class DuckCard extends MonsterCard {
 		}
 		return false;
 	}
-	
+
+	/**
+	 *	@return	monster's image
+	 */
 	public Image getImg() {
 		// TODO Auto-generated method stub
 		if(this.getStatus()) return (new Image(getClass().getResourceAsStream("../img/DuckAtk.png")));
