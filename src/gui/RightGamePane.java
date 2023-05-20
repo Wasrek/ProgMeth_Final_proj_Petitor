@@ -1,12 +1,15 @@
 package gui;
 
 import application.main;
+import javafx.scene.layout.BackgroundFill;
+import javafx.scene.layout.CornerRadii;
 import card.BaseCard;
 import card.BirdCard;
 import card.MonsterCard;
 import card.SpellCard;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
+import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.control.Button;
 import javafx.scene.control.ContentDisplay;
@@ -15,6 +18,7 @@ import javafx.scene.control.Labeled;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
+import javafx.scene.layout.Background;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.Region;
 import javafx.scene.layout.VBox;
@@ -36,15 +40,19 @@ public class RightGamePane extends VBox{
 	
 	public RightGamePane() {
 		super();
+		this.setBackground(new Background(new BackgroundFill(Color.BLACK, new CornerRadii(0), getInsets())));
+		this.setPadding(new Insets(13,15,20,10));
 		String PhLabel = "Phrase "+Integer.toString(GameLogic.getInstance().getNowPhrase());
 		Label PhText = new Label(PhLabel);
         PhText.setFont(new Font("Copperplate", 20));
         PhText.setPrefSize(250, 50);
+        PhText.setTextFill(Color.WHITE);
         String curmoney = " / "+GameLogic.getInstance().getCur().getMoney();
         String PriceLabel = "Price: "+Integer.toString(GameLogic.getInstance().getSumPrice())+curmoney;
 		Label PriceText = new Label(PriceLabel);
         PriceText.setFont(new Font("Copperplate", 20));
         PriceText.setPrefSize(250, 50);
+        PriceText.setTextFill(Color.WHITE);
         
         
         AnimatePane NotiPane = new AnimatePane();
@@ -65,7 +73,7 @@ public class RightGamePane extends VBox{
         buttonHBox.setSpacing(20);
         buttonHBox.setAlignment(javafx.geometry.Pos.CENTER);
         
-        
+        buttonHBox.setPadding(new Insets(0,0,10,0));
         
         ImageView pauseView = new ImageView(new Image(getClass().getResourceAsStream("../img/pause.png")));
         pauseView.setFitWidth(25);
@@ -83,6 +91,7 @@ public class RightGamePane extends VBox{
                 "-fx-max-height: 25px;");
         pauseBtn.setAlignment(Pos.TOP_RIGHT);
         pauseBtn.setOnAction(event -> {
+        	SoundManager.playSound("audio/select-click.mp3");
         	main.showPauseScene();
         });
         HBox pauseBox = new HBox();
@@ -92,8 +101,6 @@ public class RightGamePane extends VBox{
         
         this.monInfo = new InfoPane();
         
-        
-        
         this.getChildren().addAll(pauseBox, PhText, PriceText, NotiPane, buttonHBox,  monInfo);
         
 	}
@@ -102,7 +109,12 @@ public class RightGamePane extends VBox{
 		SoundManager.playSound("audio/select-click.mp3");
 		int nPhrase = GameLogic.getInstance().getNowPhrase();
 		if(nPhrase == 1) {
-			if(GameLogic.getInstance().getCur().isBuyable(GameLogic.getInstance().getnowClick()))GameLogic.getInstance().buyClick();
+			if(GameLogic.getInstance().getCur().isBuyable(GameLogic.getInstance().getnowClick())) {
+				System.out.println("Buy");
+				GameLogic.getInstance().buyClick();
+			}else {
+				System.out.println("Can't buy, check in player");
+			}
 		}else if(nPhrase == 2) {
 			GameLogic.getInstance().useEffClick();
 		}else if(nPhrase == 3) {
@@ -122,82 +134,85 @@ public class RightGamePane extends VBox{
 		if(GameLogic.getInstance().getSumPrice() > GameLogic.getInstance().getCur().getMoney()) {
 			((Labeled) this.getChildren().get(2)).setTextFill(Color.RED);
 		}else {
-			((Labeled) this.getChildren().get(2)).setTextFill(Color.BLACK);
+			((Labeled) this.getChildren().get(2)).setTextFill(Color.WHITE);
 		}
 		((Labeled) this.getChildren().get(1)).setText("Phrase "+Integer.toString(GameLogic.getInstance().getNowPhrase()));
 		chooseButton.setText(GameLogic.getInstance().getPhraseText());
 	}
 
 	public void updateCardInfo() {
+//		Platform.runLater(
+//				  () -> {
+					  	BaseCard card  = ((GameFieldPane) main.getGameRoot().getChildren().get(1)).getLastClick();
+						System.out.println("0");
+						this.monInfo.rnImgLB(card.getImg());
+						this.monInfo.rnNameLB("Name : " + card.getName());
+						this.monInfo.rnPriceLB("Price : " + card.getPrice());
+						if (card instanceof MonsterCard) {
+							System.out.println("2");
+							this.monInfo.rnEffLB("Eff : " + ((MonsterCard) card).performEffect());
+							this.monInfo.rnAtkLB("Atk : " + ((MonsterCard) card).getAtkVal());
+							this.monInfo.rnDefLB("Def : " + ((MonsterCard) card).getDefVal());
+						}else {
+							System.out.println("3");
+							this.monInfo.rnEffLB("Eff : " + card.toString());
+							this.monInfo.rnAtkLB("Atk : -");
+							this.monInfo.rnDefLB("Def : -");
+						}
+//				  }
+//				);
 		System.out.println("1");
-		BaseCard card  = ((GameFieldPane) main.getGameRoot().getChildren().get(1)).getLastClick();
-		System.out.println("0");
-		this.monInfo.rnImgLB(card.getImg());
-		this.monInfo.rnNameLB("Name : " + card.getName());
-		this.monInfo.rnPriceLB("Price : " + card.getPrice());
-		if (card instanceof MonsterCard) {
-			System.out.println("2");
-			this.monInfo.rnEffLB("Eff : " + ((MonsterCard) card).performEffect());
-			this.monInfo.rnAtkLB("Atk : " + ((MonsterCard) card).getAtkVal());
-			this.monInfo.rnDefLB("Def : " + ((MonsterCard) card).getDefVal());
-		}else {
-			System.out.println("3");
-			this.monInfo.rnEffLB("Eff : " + card.toString());
-			this.monInfo.rnAtkLB("Atk : -");
-			this.monInfo.rnDefLB("Def : -");
-		}
-		playNotiPane();
 	}
 	
-	public void playNotiPane() {
-		Platform.runLater(
-				  () -> {
-					  String updgif = "../gif/Loading.gif";
-					  ((AnimatePane) this.getChildren().get(3)).setupdate("yeah",updgif);
-						FadeTransition fd = new FadeTransition();  
-						
-						//set the duration for the Fade transition   
-						fd.setDuration(Duration.millis(1000));   
-						fd.setFromValue(0);  
-						fd.setToValue(1);  
-						//set the cycle count for the Fade transition   
-//			        	    fd.setCycleCount(3);  
-						  
-						//the transition will set to be auto reversed by setting this to true   
-						//set Circle as the node onto which the transition will be applied  
-						fd.setNode(this.getChildren().get(3));  
-						  
-						
-						FadeTransition fdo = new FadeTransition();  
-						
-						//set the duration for the Fade transition   
-						fdo.setDuration(Duration.millis(3000));   
-						fdo.setFromValue(1);  
-						fdo.setToValue(0);
-						  
-						//the transition will set to be auto reversed by setting this to true   
-						//set Circle as the node onto which the transition will be applied  
-						fdo.setNode(this.getChildren().get(3));  
-						  
-						  
-						//playing the transition   
-						fd.play();  
-						fd.setOnFinished(e -> {
-							try {
-								fdo.play();
-							} catch (Exception e1) {
-								e1.printStackTrace();
-							}
-//			        			new MenuBpane();
-						});
-						fdo.setOnFinished(e -> {
-							try {
-								((AnimatePane) this.getChildren().get(3)).setnormal();
-							} catch (Exception e1) {
-								e1.printStackTrace();
-							}
-						});
-				  }
-				);
-	}
+//	public void playNotiPane() {
+//		Platform.runLater(
+//				  () -> {
+//					  String updgif = "../gif/Loading.gif";
+//					  ((AnimatePane) this.getChildren().get(3)).setupdate("yeah",updgif);
+//						FadeTransition fd = new FadeTransition();  
+//						
+//						//set the duration for the Fade transition   
+//						fd.setDuration(Duration.millis(1000));   
+//						fd.setFromValue(0);  
+//						fd.setToValue(1);  
+//						//set the cycle count for the Fade transition   
+////			        	    fd.setCycleCount(3);  
+//						  
+//						//the transition will set to be auto reversed by setting this to true   
+//						//set Circle as the node onto which the transition will be applied  
+//						fd.setNode(this.getChildren().get(3));  
+//						  
+//						
+//						FadeTransition fdo = new FadeTransition();  
+//						
+//						//set the duration for the Fade transition   
+//						fdo.setDuration(Duration.millis(3000));   
+//						fdo.setFromValue(1);  
+//						fdo.setToValue(0);
+//						  
+//						//the transition will set to be auto reversed by setting this to true   
+//						//set Circle as the node onto which the transition will be applied  
+//						fdo.setNode(this.getChildren().get(3));  
+//						  
+//						  
+//						//playing the transition   
+//						fd.play();  
+//						fd.setOnFinished(e -> {
+//							try {
+//								fdo.play();
+//							} catch (Exception e1) {
+//								e1.printStackTrace();
+//							}
+////			        			new MenuBpane();
+//						});
+//						fdo.setOnFinished(e -> {
+//							try {
+//								((AnimatePane) this.getChildren().get(3)).setnormal();
+//							} catch (Exception e1) {
+//								e1.printStackTrace();
+//							}
+//						});
+//				  }
+//				);
+//	}
 }

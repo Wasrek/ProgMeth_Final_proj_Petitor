@@ -73,6 +73,7 @@ public class Player implements Buyable{
 	public void buy(ArrayList<BaseCard> buyCards) {
 		// TODO Auto-generated method stub
 		if (this.isBuyable(buyCards)) {
+			GameLogic.getInstance().updBuyani();
 			GameLogic.getInstance().getCur().setMoney(GameLogic.getInstance().getCur().getMoney() - GameLogic.getInstance().getSumPrice());
 			GameLogic.getInstance().setSumPrice(0);
 			for(BaseCard cd : GameLogic.getInstance().getnowClick()) {
@@ -93,6 +94,7 @@ public class Player implements Buyable{
 	public boolean isBuyable(ArrayList<BaseCard> buyCards) {
 		// TODO Auto-generated method stub		
 		if(GameLogic.getInstance().getSumPrice() > GameLogic.getInstance().getCur().getMoney()) {
+			GameLogic.getInstance().updTextani("not enough money");
 			return false;
 		}
 		int moncnt=0, Spcnt=0;
@@ -106,9 +108,11 @@ public class Player implements Buyable{
 			}
 		}
 		if((moncnt + GameLogic.getInstance().getCur().getMonHand().size()) > 3) {
+			GameLogic.getInstance().updTextani("Your deck is full");
 			return false;
 		}
 		if(Spcnt + GameLogic.getInstance().getCur().getSpHand().size() >3) {
+			GameLogic.getInstance().updTextani("Your deck is full");
 			return false;
 		}
 		return true;

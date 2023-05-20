@@ -30,6 +30,7 @@ public class GolemCard extends MonsterCard {
 	public void attack(BaseCard card) {
 		// TODO Auto-generated method stub
 		if (this.isAttackable(card)) {
+			game.updAtkani("Monster attacked");
 			this.setLastAtk(game.getTurnCount());
 			System.out.println(this.toString() + "Attack");
 			if (((MonsterCard) card).getStatus()) {
@@ -51,6 +52,7 @@ public class GolemCard extends MonsterCard {
 				int diff = this.getAtkVal() - ((MonsterCard) card).getDefVal();
 				if (((MonsterCard) card).isGuardable(this)) {
 					game.getCur().setHp(game.getCur().getHp() + diff);
+					game.updProtectani();
 				}else {
 					game.getOpp().getMonHand().remove(card);
 				}
@@ -60,7 +62,7 @@ public class GolemCard extends MonsterCard {
 
 	@Override
 	public boolean isAttackable(BaseCard card) {
-		// TODO Auto-generated method stub
+		// TODO Auto-generated method stub=
 		return (this.getStatus() && (this.getLastAtk() != game.getTurnCount()));
 	}
 
@@ -75,6 +77,7 @@ public class GolemCard extends MonsterCard {
 		// TODO Auto-generated method stub
 		if (isEffectable()) {
 			System.out.println(this.toString() + this.performEffect());
+			game.updUseEffani(this.performEffect());
 			this.setLastUsedTurn(game.getTurnCount());
 			for (BaseCard e: game.getCur().getMonHand()) {
 				if (e != this) {

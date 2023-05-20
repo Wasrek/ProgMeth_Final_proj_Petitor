@@ -59,7 +59,7 @@ public class main extends Application {
 		mainStage = primaryStage;
 		mainStage.setTitle("Petitor");
 		mainStage.setResizable(false);
-		String imagePath = "../img/Duck.png";
+		String imagePath = "../img/Logo.png";
 		mainStage.getIcons().add(new Image(getClass().getResourceAsStream(imagePath)));
 		mainStage.setOnCloseRequest(new EventHandler<WindowEvent>() {
 			@Override
@@ -101,6 +101,7 @@ public class main extends Application {
 		fadeOut.setCycleCount(1);
 		
 		fadeIn.play();
+		
 		fadeIn.setOnFinished(e -> {
 			try {
 				SoundManager.playSound("audio/wind-blow.mp3");
@@ -139,7 +140,11 @@ public class main extends Application {
 		pathTransition.setNode(bgImg);
 		pathTransition.setPath(new Circle(1000, 700, 50));
 		pathTransition.setCycleCount(Animation.INDEFINITE);
-		pathTransition.play();
+		Platform.runLater(
+				  () -> {
+					  pathTransition.play();
+				  }
+				);
 
 		menuRoot.getChildren().add(menupane);
 
@@ -147,7 +152,7 @@ public class main extends Application {
 
 		Pane whitePane = new Pane();
 		whitePane.setPrefSize(1280, 720);
-		whitePane.setStyle("-fx-background-color: white");
+		whitePane.setStyle("-fx-background-color: Black");
 		whitePane.setMouseTransparent(true);
 		menuRoot.getChildren().add(whitePane);
 
@@ -158,13 +163,37 @@ public class main extends Application {
 
 		Scene menuScene = new Scene(menuRoot, 1280, 720);
 		mainStage.setScene(menuScene);
-		fadeout.play();
+		Platform.runLater(
+				  () -> {
+					  fadeout.play();
+				  }
+				);
 
 	}
 	
 	static HBox gameRoot = new HBox();
 	
 	public static void showGameScene() {
+		
+		StackPane bgPane = new StackPane();
+		String imagePath = "../img/Stars_bg.jpg";
+		Image img = new Image(main.class.getResourceAsStream(imagePath));
+		ImageView bgImg = new ImageView(img);
+		bgImg.setFitWidth(1800);
+		bgImg.setFitHeight(2000);
+		bgPane.getChildren().add(bgImg);
+		
+//		Platform.runLater(
+//				  () -> {
+//					  	PathTransition pathTransition = new PathTransition();
+//						pathTransition.setDuration(Duration.minutes(1));
+//						pathTransition.setNode(bgImg);
+//						pathTransition.setPath(new Circle(1000, 700, 50));
+//						pathTransition.setCycleCount(Animation.INDEFINITE);
+//						pathTransition.play();
+//				  }
+//				);
+		
 		gameRoot = new HBox();
 //		BorderPane gamePane = new BorderPane();
 		LeftGamePane leftPane = new LeftGamePane();
@@ -173,10 +202,12 @@ public class main extends Application {
 		gameRoot.getChildren().addAll(leftPane, gamePane, rightPane);
 		System.out.println("gamePane added");
 		gameRoot.setAlignment(javafx.geometry.Pos.CENTER);
-
-		Scene gameScene = new Scene(gameRoot, 1280, 720);
-		gamePane.setBackground(new Background(new BackgroundFill(Color.WHITE, CornerRadii.EMPTY, Insets.EMPTY)));
-
+		
+		bgPane.getChildren().add(gameRoot);
+		
+		Scene gameScene = new Scene(bgPane, 1280, 720);
+//		gamePane.setBackground(new Background(new BackgroundFill(Color.WHITE, CornerRadii.EMPTY, Insets.EMPTY)));
+		
 		System.out.println("Set MainStage");
 		mainStage.setScene(gameScene);
 
@@ -191,15 +222,57 @@ public class main extends Application {
 		mainStage.setScene(pauseScene);
 	}
 	
-	public static void showEndScene() {
-		HBox test1 = new HBox();
+	public static void showEndPage() {
 		int winner = 1;
 		if (GameLogic.getInstance().getPlayers().get(1).getHp() <= 0) winner =0;
 		EndScene endPane = new EndScene(GameLogic.getInstance().getPlayers().get(winner));
-		test1.getChildren().add(endPane);
-		Scene endScene = new Scene(test1, 1280, 720);
+		Scene endScene = new Scene(endPane, 1280, 720);
 		mainStage.setScene(endScene);
+		FadeTransition fadeIn = new FadeTransition(javafx.util.Duration.seconds(1), endPane);
+		fadeIn.setFromValue(0);
+		fadeIn.setToValue(1);
+		fadeIn.setCycleCount(1);
+		fadeIn.play();
+	}
+	
+	public static void showEndScene() {
+		HBox splashPane = new HBox();
+		splashPane.setAlignment(Pos.CENTER);
+		splashPane.setStyle("-fx-background-color: Black");
+		Text splashPaneText = new Text("GAME END");
+		splashPaneText.setFont(Font.font("Verdana", FontWeight.BOLD, 50));
+		splashPaneText.setFill(Color.WHITE);
+		splashPane.getChildren().add(splashPaneText);
+		mainStage.setScene(new Scene(splashPane, 1280, 720));
+
+		FadeTransition fadeIn = new FadeTransition(javafx.util.Duration.seconds(1), splashPane);
+		fadeIn.setFromValue(0);
+		fadeIn.setToValue(1);
+		fadeIn.setCycleCount(1);
+
+		FadeTransition fadeOut = new FadeTransition(javafx.util.Duration.seconds(1), splashPane);
+		fadeOut.setFromValue(1);
+		fadeOut.setToValue(0);
+		fadeOut.setCycleCount(1);
 		
+		fadeIn.play();
+		
+		fadeIn.setOnFinished(e -> {
+			try {
+				SoundManager.playSound("audio/bell.mp3");
+				fadeOut.play();
+			} catch (Exception e1) {
+				e1.printStackTrace();
+			}
+//			new MenuBpane();
+		});
+		fadeOut.setOnFinished(e -> {
+			try {
+				showEndPage();
+			} catch (Exception e1) {
+				e1.printStackTrace();
+			}
+		});
 	}
 
 	public static HBox getGameRoot() {

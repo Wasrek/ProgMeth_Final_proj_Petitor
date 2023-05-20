@@ -1,5 +1,6 @@
 package sound;
 
+import javafx.application.Platform;
 import javafx.scene.media.AudioClip;
 
 /**
@@ -38,7 +39,11 @@ public class SoundManager {
 		currentBGM = new AudioClip(ClassLoader.getSystemResource(url).toString());
 		currentBGM.setCycleCount(AudioClip.INDEFINITE);
 		currentBGM.setVolume(volume);
-		currentBGM.play();
+		Platform.runLater(
+				  () -> {
+					  currentBGM.play();
+				  }
+				);
 	}
 	
 	/**
@@ -47,8 +52,12 @@ public class SoundManager {
 	 * @param url Sound URL
 	 */
 	public static void playSound(String url) {
-		AudioClip audio = new AudioClip(ClassLoader.getSystemResource(url).toString());
-		audio.play();
+		Platform.runLater(
+				  () -> {
+					  AudioClip audio = new AudioClip(ClassLoader.getSystemResource(url).toString());
+						audio.play();
+				  }
+				);
 	}
 	
 	/**

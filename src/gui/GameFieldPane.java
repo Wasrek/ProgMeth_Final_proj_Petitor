@@ -1,5 +1,8 @@
 package gui;
 
+import javafx.animation.Animation;
+
+import javafx.animation.PathTransition;
 import javafx.application.Application;
 
 import javafx.geometry.Insets;
@@ -7,11 +10,19 @@ import javafx.scene.Scene;
 import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.layout.Background;
+import javafx.scene.layout.BackgroundImage;
+import javafx.scene.layout.BackgroundPosition;
+import javafx.scene.layout.BackgroundRepeat;
+import javafx.scene.layout.BackgroundSize;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
+import javafx.scene.paint.Color;
+import javafx.scene.shape.Circle;
 import javafx.scene.text.Font;
 import javafx.stage.Stage;
+import javafx.util.Duration;
 import logic.GameLogic;
 
 import java.util.ArrayList;
@@ -37,18 +48,20 @@ public class GameFieldPane extends VBox {
 
 	BaseCard lastClick = new BirdCard();
     Image nocard = new Image(getClass().getResourceAsStream("../img/nocard.jpg"));
-    
     public GameFieldPane() {
         // Monster Market label
     	super();
+    	this.setPadding(new Insets(30,0,30,0));
+		
         Label MM_Text = new Label("Monster Market");
         MM_Text.setFont(new Font("Copperplate", 14));
         MM_Text.setPrefSize(135, 20);
+        MM_Text.setTextFill(Color.WHITE);
 
         // Top HBox
         HBox MM_TextHBox = new HBox(MM_Text);
         MM_TextHBox.setPrefSize(790, 25);
-        MM_TextHBox.setPadding(new Insets(0, 0, 3, 0));
+        MM_TextHBox.setPadding(new Insets(0, 0, 6, 0));
         MM_TextHBox.setAlignment(javafx.geometry.Pos.BOTTOM_CENTER);
         
         int ImgMSize = 86, ImgGSize = 120, MSBoxW = 120, MSBoxH = 454, MSBoxSp = 5;
@@ -79,7 +92,7 @@ public class GameFieldPane extends VBox {
         // Center HBox
         HBox MonMarHBox = new HBox(MM.get(0), MM.get(1), MM.get(2));
         MonMarHBox.setPrefSize(MKBoxW, MKBoxH);
-        MonMarHBox.setPadding(new Insets(0, 0, 20, 0));
+        MonMarHBox.setPadding(new Insets(0, 0, 10, 0));
         MonMarHBox.setSpacing(MKBoxSp);
         MonMarHBox.setAlignment(javafx.geometry.Pos.CENTER);
 
@@ -124,7 +137,8 @@ public class GameFieldPane extends VBox {
         	int idx = i;
         	P1M.get(i).setOnMouseClicked(e -> FieldClicked(e, idx, 0, true));
         	
-        	P1MT.get(P1M.size()-1).setFont(new Font("Copperplate", 10));
+        	P1MT.get(P1M.size()-1).setFont(new Font("Copperplate", 12));
+        	P1MT.get(P1M.size()-1).setTextFill(Color.WHITE);
         	P1MT.get(P1M.size()-1).setPrefSize(ImgMSize-10, 20);
         }
 
@@ -160,7 +174,8 @@ public class GameFieldPane extends VBox {
         	P2M.get(i).setFitHeight(ImgGSize);
         	int idx = i;
         	P2M.get(i).setOnMouseClicked(e -> FieldClicked(e, idx, 1, true));
-        	P2MT.get(P2M.size()-1).setFont(new Font("Copperplate", 10));
+        	P2MT.get(P2M.size()-1).setFont(new Font("Copperplate", 12));
+        	P2MT.get(P2M.size()-1).setTextFill(Color.WHITE);
 //        	P2MT.get(P2M.size()-1).setStyle("-fx-background-color: #ff0000;");  // Red background color
         	P2MT.get(P2M.size()-1).setPrefSize(ImgMSize-10, 20);
         }
@@ -205,18 +220,19 @@ public class GameFieldPane extends VBox {
         
         HBox playersHBox = new HBox(player1HBox, player2HBox);
         playersHBox.setPrefSize(790, 550);
-        playersHBox.setPadding(new Insets(0, 60, 0, 60));
+        playersHBox.setPadding(new Insets(0, 30, 0, 30));
         playersHBox.setAlignment(javafx.geometry.Pos.CENTER);
         
         HBox SpMarHBox = new HBox(SM.get(0), SM.get(1), SM.get(2));
         SpMarHBox.setPrefSize(MKBoxW, MKBoxH);
         SpMarHBox.setSpacing(MKBoxSp);
-        SpMarHBox.setPadding(new Insets(20, 0, 0, 0));
+        SpMarHBox.setPadding(new Insets(10, 0, 0, 0));
         SpMarHBox.setAlignment(javafx.geometry.Pos.CENTER);
 
         // Spell Market Label
         Label SM_Text = new Label("Spell Market");
         SM_Text.setFont(new Font("Copperplate", 14));
+        SM_Text.setTextFill(Color.WHITE);
         SM_Text.setTextAlignment(javafx.scene.text.TextAlignment.CENTER);
         SM_Text.setContentDisplay(javafx.scene.control.ContentDisplay.CENTER);
 

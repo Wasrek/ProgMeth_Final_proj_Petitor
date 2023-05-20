@@ -16,6 +16,7 @@ public class TornadoCard extends SpellCard{
 	public void useEffect() {
 		// TODO Auto-generated method stub
 		if (this.isEffectable()) {
+			game.updUseEffani("Tornado!");
 			game.getOpp().getSpHand().remove(game.getnowClick().get(1));
 			game.getCur().getSpHand().remove(this);
 		}

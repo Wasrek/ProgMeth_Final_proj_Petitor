@@ -252,6 +252,7 @@ public class GameLogic {
 			if(!((MonsterCard) this.getnowClick().get(0)).isAttackable(null)) {
 				return ;
 			}
+			this.updAtkani("Player attacked");
 			((MonsterCard) this.getnowClick().get(0)).setLastAtk(GameLogic.getInstance().getTurnCount());
 			GameLogic.getInstance().getOpp().setHp(GameLogic.getInstance().getOpp().getHp()-((MonsterCard) this.getnowClick().get(0)).getVal());
 			((LeftGamePane) main.getGameRoot().getChildren().get(0)).updateStatus();
@@ -292,20 +293,29 @@ public class GameLogic {
     	}
     }
 	
-	public void updAtkani() {
-		
+	public void updAtkani(String txt) {
+		String gifp = "../gif/Claws.gif";
+		((AnimatePane) ((RightGamePane) main.getGameRoot().getChildren().get(2)).getChildren().get(3)).setupdate(txt, gifp);
 	}
 	
 	public void updProtectani() {
-		
+		String gifp = "../gif/protect.gif";
+		((AnimatePane) ((RightGamePane) main.getGameRoot().getChildren().get(2)).getChildren().get(3)).setupdate("Protect!", gifp);
 	}
 	
-	public void updUseEffani() {
-		
+	public void updUseEffani(String effname) {
+		String gifp = "../gif/Star.gif";
+		((AnimatePane) ((RightGamePane) main.getGameRoot().getChildren().get(2)).getChildren().get(3)).setupdate(effname, gifp);
 	}
 	
 	public void updBuyani() {
-		
+		String gifp = "../gif/lighting.gif";
+		((AnimatePane) ((RightGamePane) main.getGameRoot().getChildren().get(2)).getChildren().get(3)).setupdate("Deck added!", gifp);
+	}
+	
+	public void updTextani(String txt) {
+		String gifp = "../gif/Loading.gif";
+		((AnimatePane) ((RightGamePane) main.getGameRoot().getChildren().get(2)).getChildren().get(3)).setupdate(txt, gifp);
 	}
 	
 }

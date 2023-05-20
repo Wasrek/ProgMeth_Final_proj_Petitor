@@ -15,6 +15,7 @@ public class BlackholeCard extends SpellCard{
 	public void useEffect() {
 		// TODO Auto-generated method stub
 		if (this.isEffectable()) {
+			game.updUseEffani("Blackhole!");
 			game.getOpp().getMonHand().remove(game.getnowClick().get(1));
 			game.getCur().getSpHand().remove(this);
 		}

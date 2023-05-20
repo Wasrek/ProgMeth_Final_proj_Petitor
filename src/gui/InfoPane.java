@@ -19,7 +19,7 @@ public class InfoPane extends VBox{
 		// TODO Auto-generated constructor stub
 		super();
 		this.setWidth(300);
-		this.setHeight(570);
+		this.setMaxHeight(560);
 		this.setBackground(new Background(new BackgroundFill(Color.WHITE, null, null)));
         this.setSpacing(10);
         this.setPadding(new Insets(20));
@@ -30,7 +30,11 @@ public class InfoPane extends VBox{
         Label atkLB = new Label("Atk :");
         Label defLB = new Label("Def :");
         Label effLB = new Label("Eff :");
-        ImageView img = new ImageView(new Image(getClass().getResourceAsStream("../img/Dog.png")));
+        Image initimg = new Image(getClass().getResourceAsStream("../gif/yellow.gif"));
+        ImageView img = new ImageView(initimg);
+        img.setFitHeight(256);
+        img.setFitWidth(256);
+        img.setPreserveRatio(true);
         
         this.getChildren().addAll(img, nameLB, priceLB, atkLB, defLB, effLB);
 	}

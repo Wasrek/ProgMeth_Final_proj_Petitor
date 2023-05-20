@@ -25,15 +25,15 @@ public class AnimatePane extends StackPane{
 	public AnimatePane(){
 		super();
 //		this.setBackground(new Background(new BackgroundFill(Color.RED, new CornerRadii(20), getInsets())));
-		this.setMinHeight(180);
+		this.setMinHeight(170);
 		VBox vBox = new VBox();
-		vBox.setPadding(new Insets(20,0,0,0));
-//		vBox.setBackground(new Background(new BackgroundFill(Color.BLUE, new CornerRadii(20), getInsets())));
+		vBox.setPadding(new Insets(5,0,0,0));
+		vBox.setBackground(new Background(new BackgroundFill(Color.BLACK, new CornerRadii(20), getInsets())));
 		
 		String imgpath = "../gif/Loading.gif";
 		Image image = new Image(getClass().getResourceAsStream(imgpath));;
 		ImageView ani = new ImageView(image);
-		ani.setFitHeight(70);
+		ani.setFitHeight(80);
 		ani.setPreserveRatio(true);
 		
 		String Noti = "Buying Phrase";
@@ -41,6 +41,7 @@ public class AnimatePane extends StackPane{
 	    NotiT.setFont(new Font("Copperplate", 20));
 	    NotiT.setPrefSize(250, 50);
 	    NotiT.setAlignment(javafx.geometry.Pos.BOTTOM_CENTER);
+	    NotiT.setTextFill(Color.WHITE);
 	    vBox.getChildren().addAll(ani, NotiT);
 	    vBox.setAlignment(javafx.geometry.Pos.CENTER);
 	    this.getChildren().add(vBox);
@@ -81,9 +82,57 @@ public class AnimatePane extends StackPane{
 	}
 	
 	public void setupdate(String str, String gifp) {
-		String anitext = str;
-		((Labeled) this.getvBox().getChildren().get(1)).setText(anitext);
-		((ImageView) this.getvBox().getChildren().get(0)).setImage(new Image(getClass().getResourceAsStream(gifp)));
+		System.out.println("upd eff ani");
+		Platform.runLater(
+				  () -> {
+				  	((Labeled) this.getvBox().getChildren().get(1)).setText(str);
+					((ImageView) this.getvBox().getChildren().get(0)).setImage(new Image(getClass().getResourceAsStream(gifp)));
+					
+					FadeTransition fd = new FadeTransition();  
+					
+					//set the duration for the Fade transition   
+					fd.setDuration(Duration.millis(1000));   
+					fd.setFromValue(0);  
+					fd.setToValue(1);  
+					//set the cycle count for the Fade transition   
+//			        	    fd.setCycleCount(3);  
+					  
+					//the transition will set to be auto reversed by setting this to true   
+					//set Circle as the node onto which the transition will be applied  
+					fd.setNode(this);  
+					  
+					
+					FadeTransition fdo = new FadeTransition();  
+					
+					//set the duration for the Fade transition   
+					fdo.setDuration(Duration.millis(3000));   
+					fdo.setFromValue(1);  
+					fdo.setToValue(0);
+					  
+					//the transition will set to be auto reversed by setting this to true   
+					//set Circle as the node onto which the transition will be applied  
+					fdo.setNode(this);  
+					  
+					  
+					//playing the transition   
+					fd.play();  
+					fd.setOnFinished(e -> {
+						try {
+							fdo.play();
+						} catch (Exception e1) {
+							e1.printStackTrace();
+						}
+//			        			new MenuBpane();
+					});
+					fdo.setOnFinished(e -> {
+						try {
+							this.setnormal();
+						} catch (Exception e1) {
+							e1.printStackTrace();
+						}
+					});
+				  }
+				);
 	}
 	private VBox getvBox() {
 		return (VBox) this.getChildren().get(0);

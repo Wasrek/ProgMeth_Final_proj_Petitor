@@ -1,11 +1,13 @@
 package gui;
 
 import application.main;
+import javafx.animation.FadeTransition;
 import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
+import javafx.scene.Scene;
 import javafx.scene.effect.Blend;
 import javafx.scene.effect.BlendMode;
 import javafx.scene.effect.DropShadow;
@@ -15,6 +17,7 @@ import javafx.scene.image.ImageView;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.VBox;
 import javafx.scene.layout.HBox;
+import javafx.scene.layout.Pane;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
 import javafx.scene.text.FontWeight;
@@ -62,6 +65,7 @@ public class MenuPane extends BorderPane {
 				GameLogic gameInstance = GameLogic.getInstance();
 				gameInstance.initGame();
 				main.showGameScene();
+//				main.showEndScene();
 			}
 
 		});
@@ -88,6 +92,7 @@ public class MenuPane extends BorderPane {
 				"\"Welcome our Petitor, enjoy your battle.\"");
 		description.setFill(Color.WHITE);
 		description.setTextAlignment(TextAlignment.CENTER);
+		description.setFont(Font.font("Verdana", FontWeight.BOLD, 15));
 		hBox_base.getChildren().addAll(KB, description);
 		hBox_base.setSpacing(10);
 		hBox_base.setPrefHeight(50);

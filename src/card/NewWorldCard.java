@@ -23,6 +23,7 @@ public class NewWorldCard extends SpellCard{
 	public void useEffect() {
 		// TODO Auto-generated method stub
 		if (this.isEffectable()) {
+			game.updUseEffani("New World!");
 			game.getMonDeck().addAll(game.getMonMarket());
 			game.getSpDeck().addAll(game.getSpMarket());
 	        

@@ -32,6 +32,7 @@ public class KingCard extends MonsterCard {
 	public void attack(BaseCard card) {
 		// TODO Auto-generated method stub
 		if (this.isAttackable(card)) {
+			game.updAtkani("Monster attacked");
 			this.setLastAtk(game.getTurnCount());
 			System.out.println(this.toString() + "Attack");
 			if (((MonsterCard) card).getStatus()) {
@@ -50,6 +51,7 @@ public class KingCard extends MonsterCard {
 				int diff = this.getAtkVal() - ((MonsterCard) card).getDefVal();
 				if (((MonsterCard) card).isGuardable(this)) {
 					game.getCur().setHp(game.getCur().getHp() + diff);
+					game.updProtectani();
 				}else {
 					game.getOpp().getMonHand().remove(card);
 				}
@@ -82,6 +84,7 @@ public class KingCard extends MonsterCard {
 		// TODO Auto-generated method stub
 		if (this.isEffectable()) {
 			System.out.println(this.toString() + this.performEffect());
+			game.updUseEffani(this.performEffect());
 			this.setLastUsedTurn(game.getTurnCount());
 			game.getCur().getMonHand().add(game.getnowClick().get(1));
 			game.getOpp().getMonHand().remove(game.getnowClick().get(1));
