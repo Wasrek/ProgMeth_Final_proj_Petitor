@@ -6,12 +6,13 @@ import logic.CardType;
 import logic.GameLogic;
 
 /**
+ * One type of monster card
  * @author Wishmeluck
  *
  */
 public class CatCard extends MonsterCard {
 	/**
-	 * Shorten the code
+	 * get game instance
 	 */
 	private GameLogic game = GameLogic.getInstance();
 

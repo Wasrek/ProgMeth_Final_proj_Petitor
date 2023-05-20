@@ -5,6 +5,7 @@ import logic.CardType;
 import logic.GameLogic;
 
 /**
+ * One type of normal base card
  * @author Wishmeluck
  *
  */

@@ -6,6 +6,7 @@ import javafx.scene.image.Image;
 import logic.CardName;
 
 /**
+ * One type of spell card
  * @author Wishmeluck
  *
  */

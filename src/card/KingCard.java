@@ -9,12 +9,13 @@ import logic.CardType;
 import logic.GameLogic;
 
 /**
+ * One type of monster card
  * @author Wishmeluck
  *
  */
 public class KingCard extends MonsterCard {
 	/**
-	 * 	Shorten the code
+	 * 	get game instance
 	 */
 	private GameLogic game = GameLogic.getInstance();
 

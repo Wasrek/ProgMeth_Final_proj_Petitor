@@ -9,13 +9,14 @@ import logic.GameLogic;
 
 
 /**
+ * One type of monster card
  * @author Wishmeluck
  *
  */
 
 public class BirdCard extends MonsterCard {
 	/**
-	 * 	Shorten the code
+	 * 	get game instance
 	 */
 	private GameLogic game = GameLogic.getInstance();
 	/**

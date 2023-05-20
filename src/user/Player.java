@@ -11,6 +11,7 @@ import javafx.application.Platform;
 import logic.GameLogic;
 
 /**
+ * game player
  * @author Wishmeluck
  *
  */
