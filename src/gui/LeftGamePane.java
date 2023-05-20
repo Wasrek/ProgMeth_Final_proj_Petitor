@@ -40,6 +40,9 @@ public class LeftGamePane extends VBox{
 	 */
 	private Label Player1_Text, Player2_Text, CPlayer_Text, turnPlay;
 
+	/**
+	 * Constructor for LeftGamePane
+	 */
 	public LeftGamePane() {
     	super();
     	

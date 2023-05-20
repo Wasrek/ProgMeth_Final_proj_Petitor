@@ -16,26 +16,26 @@ import logic.GameLogic;
  */
 public class Player implements Buyable{
 	/**
-	 * @param index	player's id
+	 * index	player's id
 	 */
 	/**
-	 * @param money	player's money
+	 * money	player's money
 	 */
 	/**
-	 * @param hp	player's life point
+	 * hp	player's life point
 	 */
 	/**
-	 * @param lastBuyS	player's last buy spell card
+	 * lastBuyS	player's last buy spell card
 	 */
 	/**
-	 * @param lastBuyM	player's last buy monster card
+	 * lastBuyM	player's last buy monster card
 	 */
 	private int index, money , hp, lastBuyS=0, lastBuyM=0;
     /**
-     * @param MonHand	player's monster cards
+     * MonHand	player's monster cards
      */
     /**
-     * @param SpHand	player's spell cards
+     * SpHand	player's spell cards
      */
     private ArrayList<BaseCard> MonHand, SpHand;
 	
@@ -126,7 +126,7 @@ public class Player implements Buyable{
 
 	/**
 	 * Setter for player's money
-	 * @param player's money
+	 * @param money player's money
 	 */
 	public void setMoney(int money) {
 		this.money = Math.max(money, 0);
@@ -168,6 +168,7 @@ public class Player implements Buyable{
 	}
 
 	/**
+	 * Method to check if can buy cards
 	 * 	@param buyCards	list that player choose to buy
 	 *	@return boolean that this player can buy those cards or not
 	 */

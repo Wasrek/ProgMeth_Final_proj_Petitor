@@ -60,7 +60,7 @@ public abstract class BaseCard implements UseEffectAble{
 	
 	/**
 	 * Getter for type 
-	 * @return 
+	 * @return 	type
 	 */
 	public CardType getType() {
 		return type;
@@ -130,7 +130,7 @@ public abstract class BaseCard implements UseEffectAble{
 	
 	/**
 	 * Setter for card's effect type 
-	 * @param effType
+	 * @param effType Card's effect type
 	 */
 	public void setEffType(int effType) {
 		this.effType = effType;

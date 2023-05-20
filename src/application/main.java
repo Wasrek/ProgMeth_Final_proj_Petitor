@@ -59,7 +59,7 @@ public class main extends Application {
 	
 	/**
 	 * JavaFX start function
-	 *@param primaryStage 
+	 *@param primaryStage 	primaryStage
 	 */
 	@Override
 	public void start(Stage primaryStage) throws Exception {

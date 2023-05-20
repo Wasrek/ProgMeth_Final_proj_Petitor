@@ -57,35 +57,35 @@ public class InfoPane extends VBox{
 	}
 	/**
 	 * the method that change information name to Text
-	 * @param Text
+	 * @param Text	Text
 	 */
 	public void rnNameLB(String Text) {
 		((Label) this.getChildren().get(1)).setText(Text);
 	}
 	/**
 	 * the method that change information price to Text
-	 * @param Text
+	 * @param Text	Text
 	 */
 	public void rnPriceLB(String Text) {
 		((Label) this.getChildren().get(2)).setText(Text);
 	}
 	/**
 	 * the method that change information Attack value to Text
-	 * @param Text
+	 * @param Text	Text
 	 */
 	public void rnAtkLB(String Text) {
 		((Label) this.getChildren().get(3)).setText(Text);
 	}
 	/**
 	 * the method that change information Defend value to Text
-	 * @param Text
+	 * @param Text	Text
 	 */
 	public void rnDefLB(String Text) {
 		((Label) this.getChildren().get(4)).setText(Text);
 	}
 	/**
 	 * the method that change information Effect to Text
-	 * @param Text
+	 * @param Text	Text
 	 */
 	public void rnEffLB(String Text) {
 		((Label) this.getChildren().get(5)).setText(Text);

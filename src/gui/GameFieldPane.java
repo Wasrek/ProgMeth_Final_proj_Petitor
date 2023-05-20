@@ -646,7 +646,7 @@ public class GameFieldPane extends VBox {
     
     /**
      * Getter for lastClick
-     * @return lastClick
+     * @return lastClick	lastClick
      */
     public BaseCard getLastClick() {
 		return lastClick;
@@ -657,7 +657,7 @@ public class GameFieldPane extends VBox {
 
 	/**
 	 * Setter for lastClick
-	 * @param lastClick
+	 * @param lastClick	lastClick
 	 */
 	public void setLastClick(BaseCard lastClick) {
 		this.lastClick = lastClick;

@@ -6,5 +6,10 @@ package card;
  *
  */
 public interface Guardable {
+	/**
+	 * check if this card can guard the attacker
+	 * @param card	card attack this
+	 * @return	true if can guard, false otherwise.
+	 */
 	boolean isGuardable(BaseCard card);
 }

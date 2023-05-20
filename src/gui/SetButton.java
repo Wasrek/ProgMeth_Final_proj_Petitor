@@ -45,7 +45,7 @@ public class SetButton extends Button{
 
 	/**
 	 * Setter for button's name
-	 * @param nameButton
+	 * @param nameButton	nameButton
 	 */
 	public void setNameButton(String nameButton) {
 		this.nameButton = nameButton;
@@ -53,7 +53,7 @@ public class SetButton extends Button{
 
 	/**
 	 * Getter for button's height
-	 * @return	height
+	 * @return	height height
 	 */
 	public double getHeightButton() {
 		return height;
@@ -61,7 +61,7 @@ public class SetButton extends Button{
 
 	/**
 	 * Setter for button's height
-	 * @param height
+	 * @param height height
 	 */
 	public void setHeightButton(int height) {
 		this.height = height;
@@ -69,7 +69,7 @@ public class SetButton extends Button{
 
 	/**
 	 * Getter for button's width
-	 * @return	width
+	 * @return	width width
 	 */
 	public double getWidthButton() {
 		return width;
@@ -77,7 +77,7 @@ public class SetButton extends Button{
 
 	/**
 	 * Setter for button's width
-	 * @param width
+	 * @param width	width
 	 */
 	public void setWidthButton(int width) {
 		this.width = width;

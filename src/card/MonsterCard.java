@@ -55,6 +55,7 @@ public abstract class MonsterCard extends BaseCard implements Attackable, Guarda
 	
 
 	/**
+	 * Get card effect's name
 	 * @return effect's name
 	 */
 	public abstract String performEffect();
