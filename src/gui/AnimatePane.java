@@ -23,7 +23,7 @@ import logic.GameLogic;
 
 /**
  * A pane on the right side that include animation showing informations
- * @author Petitor
+ * @author Wishmeluck
  *
  */
 public class AnimatePane extends StackPane{

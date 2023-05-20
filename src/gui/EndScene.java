@@ -22,7 +22,7 @@ import user.Player;
 
 /**
  * An ending scene pane
- * @author Petitor
+ * @author Wishmeluck
  *
  */
 public class EndScene extends VBox{

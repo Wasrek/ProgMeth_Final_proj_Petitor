@@ -21,7 +21,7 @@ import logic.GameLogic;
 
 /**
  * A pane showing on the left part of the gameScene
- * @author Petitor
+ * @author Wishmeluck
  *
  */
 public class LeftGamePane extends VBox{

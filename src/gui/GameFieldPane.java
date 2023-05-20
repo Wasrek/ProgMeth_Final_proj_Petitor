@@ -36,7 +36,7 @@ import card.SpellCard;
 
 /**
  * An pane showing the middle part of the gameScene including field and market
- * @author Petitor
+ * @author Wishmeluck
  *
  */
 public class GameFieldPane extends VBox {

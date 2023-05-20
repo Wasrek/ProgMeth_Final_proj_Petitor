@@ -15,7 +15,7 @@ import javafx.scene.text.Text;
 
 /**
  * A Pane for showing information of each card when it is clicked on the left side
- * @author Petitor
+ * @author Wishmeluck
  *
  */
 public class InfoPane extends VBox{

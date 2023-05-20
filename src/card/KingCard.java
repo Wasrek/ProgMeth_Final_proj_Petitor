@@ -8,26 +8,46 @@ import logic.CardName;
 import logic.CardType;
 import logic.GameLogic;
 
+/**
+ * @author Wishmeluck
+ *
+ */
 public class KingCard extends MonsterCard {
+	/**
+	 * 	Shorten the code
+	 */
 	private GameLogic game = GameLogic.getInstance();
 
+	/**
+	 * Constructor for KingCard
+	 */
 	public KingCard() {
 		super(CardName.KING, 10, 2100, 1600, true);
 		// TODO Auto-generated constructor stub
 	}
 
+	/**
+	 * @return	effect's detail in String
+	 */
 	@Override
 	public String performEffect() {
 		// TODO Auto-generated method stub
 		return "Brainwash (Control enemy monster)";
 	}
-
+	
+	/**
+	 * 	@return	String of effect's name
+	 */
 	@Override
 	public String toString() {
 		// TODO Auto-generated method stub
 		return "King";
 	}
-
+	
+	/**
+	 *	Method to attack other monsters
+	 *	@param	card card to be attacked
+	 */
 	@Override
 	public void attack(BaseCard card) {
 		// TODO Auto-generated method stub
@@ -58,7 +78,11 @@ public class KingCard extends MonsterCard {
 			}
 		}
 	}
-
+	
+	/**
+	 * @param card	card to be checked
+	 * @return	boolean that card can be attacked or not
+	 */
 	@Override
 	public boolean isAttackable(BaseCard card) {
 		// TODO Auto-generated method stub
@@ -78,7 +102,11 @@ public class KingCard extends MonsterCard {
 		}
 		return false;
 	}
-
+	
+	/**
+	 * @param 	card	card to be checked
+	 *	@return	boolean that this monster can guard card or not.
+	 */
 	@Override
 	public boolean isGuardable(BaseCard card) {
 		// TODO Auto-generated method stub
@@ -87,7 +115,10 @@ public class KingCard extends MonsterCard {
 		}
 		return false;	
 	}
-
+	
+	/**
+	 *	Method use to call effect
+	 */
 	public void useEffect() {
 		// TODO Auto-generated method stub
 		if (this.isEffectable()) {
@@ -100,6 +131,9 @@ public class KingCard extends MonsterCard {
 		}
 	}
 
+	/**
+	 *@return boolean that this monster can use effect or not
+	 */
 	@Override
 	public boolean isEffectable() {
 		// TODO Auto-generated method stub
@@ -111,6 +145,9 @@ public class KingCard extends MonsterCard {
 		return false;
 	}
 	
+	/**
+	 *	@return	monster's image
+	 */
 	public Image getImg() {
 		// TODO Auto-generated method stub
 		if(this.getStatus()) return (new Image(getClass().getResourceAsStream("../img/KingAtk.png")));

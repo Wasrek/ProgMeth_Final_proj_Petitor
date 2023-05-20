@@ -36,7 +36,7 @@ import javafx.application.Platform;
 /**
  * 
  * A pane showing on the right part of the gameScene
- * @author Petitor
+ * @author Wishmeluck
  *
  */
 public class RightGamePane extends VBox{

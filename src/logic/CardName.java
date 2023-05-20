@@ -5,7 +5,7 @@ import java.util.Arrays;
 
 /**
  * enum represents card name 
- * @author Petitor
+ * @author Wishmeluck
  *
  */
 public enum CardName {
