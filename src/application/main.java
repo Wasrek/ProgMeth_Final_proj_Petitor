@@ -43,16 +43,23 @@ import gui.RightGamePane;
 import sound.SoundManager;
 
 
+/**
+ * The main class of the game
+ * @author Petitor
+ *
+ */
 public class main extends Application {
 	
 	/**
-	 * Main Stage
+	 * Main stage
 	 */
 	public static Stage mainStage;
 	
 	
+	
 	/**
-	 * JavaFX Start Function
+	 * JavaFX start function
+	 *@param primaryStage 
 	 */
 	@Override
 	public void start(Stage primaryStage) throws Exception {
@@ -82,6 +89,9 @@ public class main extends Application {
 		launch(args);
 	}
 	
+	/**
+	 * Set welcome scene in mainStage
+	 */
 	public static void showSplashScreen() {
 		HBox splashPane = new HBox();
 		splashPane.setAlignment(Pos.CENTER);
@@ -171,8 +181,14 @@ public class main extends Application {
 
 	}
 	
+	/**
+	 * Create gameRoot pane for game scene
+	 */
 	static HBox gameRoot = new HBox();
 	
+	/**
+	 * Set gameScene in mainStage
+	 */
 	public static void showGameScene() {
 		
 		StackPane bgPane = new StackPane();
@@ -214,6 +230,9 @@ public class main extends Application {
 		SoundManager.setCurrentBGM("audio/GamePane.mp3");
 	}
 	
+	/**
+	 * Set pauseScene in mainStage
+	 */
 	public static void showPauseScene() {
 		HBox test = new HBox();
 		PausePane pausePane = new PausePane();
@@ -222,6 +241,9 @@ public class main extends Application {
 		mainStage.setScene(pauseScene);
 	}
 	
+	/**
+	 * Set endScene in mainStage
+	 */
 	public static void showEndPage() {
 		int winner = 1;
 		if (GameLogic.getInstance().getPlayers().get(1).getHp() <= 0) winner =0;
@@ -235,6 +257,9 @@ public class main extends Application {
 		fadeIn.play();
 	}
 	
+	/**
+	 * Set "End game" splash scene in mainStage
+	 */
 	public static void showEndScene() {
 		HBox splashPane = new HBox();
 		splashPane.setAlignment(Pos.CENTER);
@@ -275,10 +300,18 @@ public class main extends Application {
 		});
 	}
 
+	/**
+	 * getter function for gameRoot
+	 * @return gameRoot
+	 */
 	public static HBox getGameRoot() {
 		return gameRoot;
 	}
 
+	/**
+	 * setter function for gameRoot
+	 * @param gameRoot gameRoot of the main gameScene
+	 */
 	public static void setGameRoot(HBox gameRoot) {
 		main.gameRoot = gameRoot;
 	}

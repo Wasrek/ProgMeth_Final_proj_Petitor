@@ -112,7 +112,7 @@ public class GameFieldPane extends VBox {
         
         VBox P1SpellBox = new VBox(P1S.get(0), P1S.get(1), P1S.get(2));
         P1SpellBox.setPrefSize(MSBoxW, MSBoxH);
-        P1SpellBox.setSpacing(MSBoxSp);
+        P1SpellBox.setSpacing(10);
         P1SpellBox.setAlignment(javafx.geometry.Pos.CENTER);
         
         System.out.println("hi1");
@@ -198,7 +198,7 @@ public class GameFieldPane extends VBox {
 
         VBox P2SpellBox = new VBox(P2S.get(0), P2S.get(1), P2S.get(2));
         P2SpellBox.setPrefSize(MSBoxW, MSBoxH);
-        P2SpellBox.setSpacing(MSBoxSp);
+        P2SpellBox.setSpacing(10);
         P2SpellBox.setAlignment(javafx.geometry.Pos.CENTER);
 
         HBox player2HBox = new HBox(P2MonsterBox, P2SpellBox);

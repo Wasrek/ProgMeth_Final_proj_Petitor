@@ -5,6 +5,10 @@ import logic.CardName;
 import logic.CardType;
 
 //You CAN modify the first line
+/**
+ * @author Petitor
+ *
+ */
 public abstract class BaseCard implements UseEffectAble{
     // TODO Implement here
 	private CardType type;

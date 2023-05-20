@@ -93,7 +93,7 @@ public class DuckCard extends MonsterCard {
 	public boolean isEffectable() {
 		// TODO Auto-generated method stub
 		if (game.getTurnCount() != this.getLastUsedTurn()) {
-			if (game.getCur().getHp() > game.getOpp().getHp()) {
+			if (game.getCur().getHp() < game.getOpp().getHp()) {
 				return true;			
 			}
 		}

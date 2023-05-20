@@ -54,6 +54,6 @@ public class NewWorldCard extends SpellCard{
 	
 	public Image getImg() {
 		// TODO Auto-generated method stub
-		return (new Image(getClass().getResourceAsStream("../img/NewWorld.jpg")));
+		return (new Image(getClass().getResourceAsStream("../img/NewWorld.png")));
 	}
 }
