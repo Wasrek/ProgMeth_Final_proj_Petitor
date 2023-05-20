@@ -13,8 +13,16 @@ import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Text;
 
+/**
+ * A Pane for showing information of each card when it is clicked on the left side
+ * @author Petitor
+ *
+ */
 public class InfoPane extends VBox{
 	
+	/**
+	 * Constructor for an Infopane
+	 */
 	public InfoPane() {
 		// TODO Auto-generated constructor stub
 		super();
@@ -40,21 +48,45 @@ public class InfoPane extends VBox{
 	}
 	
 	
+	/**
+	 * the method that change information image to image
+	 * @param image	image
+	 */
 	public void rnImgLB(Image image) {
 		((ImageView) this.getChildren().get(0)).setImage(image);
 	}
+	/**
+	 * the method that change information name to Text
+	 * @param Text
+	 */
 	public void rnNameLB(String Text) {
 		((Label) this.getChildren().get(1)).setText(Text);
 	}
+	/**
+	 * the method that change information price to Text
+	 * @param Text
+	 */
 	public void rnPriceLB(String Text) {
 		((Label) this.getChildren().get(2)).setText(Text);
 	}
+	/**
+	 * the method that change information Attack value to Text
+	 * @param Text
+	 */
 	public void rnAtkLB(String Text) {
 		((Label) this.getChildren().get(3)).setText(Text);
 	}
+	/**
+	 * the method that change information Defend value to Text
+	 * @param Text
+	 */
 	public void rnDefLB(String Text) {
 		((Label) this.getChildren().get(4)).setText(Text);
 	}
+	/**
+	 * the method that change information Effect to Text
+	 * @param Text
+	 */
 	public void rnEffLB(String Text) {
 		((Label) this.getChildren().get(5)).setText(Text);
 	}

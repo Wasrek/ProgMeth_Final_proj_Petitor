@@ -19,11 +19,27 @@ import javafx.scene.text.Text;
 import javafx.util.Duration;
 import logic.GameLogic;
 
+/**
+ * A pane showing on the left part of the gameScene
+ * @author Petitor
+ *
+ */
 public class LeftGamePane extends VBox{
 	
+	/**
+	 * 	Text describe player 1
+	 */
+	/**
+	 * Text describe player 2
+	 */
+	/**
+	 * Text describe current player
+	 */
+	/**
+	 * Text describe current turn
+	 */
 	private Label Player1_Text, Player2_Text, CPlayer_Text, turnPlay;
-	Rectangle turnFrame;
-	
+
 	public LeftGamePane() {
     	super();
     	
@@ -58,6 +74,9 @@ public class LeftGamePane extends VBox{
         this.setAlignment(javafx.geometry.Pos.CENTER);
 	}
 	
+	/**
+	 * 	update all texts in the pane
+	 */
 	public void updateStatus() {
 		CPlayer_Text.setText("Current player: "+Integer.toString(GameLogic.getInstance().getCurrentPlayer()+1));
 		Player1_Text.setText("Player1\nTokens : "+Integer.toString(GameLogic.getInstance().getPlayers().get(0).getMoney())+"\nHp : "+Integer.toString(GameLogic.getInstance().getPlayers().get(0).getHp()));

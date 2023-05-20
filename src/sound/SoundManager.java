@@ -3,8 +3,11 @@ package sound;
 import javafx.application.Platform;
 import javafx.scene.media.AudioClip;
 
+
 /**
  * Sound Manager
+ * @author Petitor
+ *
  */
 public class SoundManager {
 	/**

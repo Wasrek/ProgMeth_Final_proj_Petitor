@@ -20,15 +20,60 @@ import gui.AnimatePane;
 import gui.GameFieldPane;
 import gui.RightGamePane;
 import gui.LeftGamePane;
+/**
+ * Game System logic
+ * @author Wishmeluck
+ *
+ */
 public class GameLogic {
+    /**
+     * Game System Logic
+     */
     private final int initialPlayerCount = 2;
+    /**
+     * Monster cards in the deck 
+     */
+    /**
+     * Spell cards in the deck
+     */
+    /**
+     * Monster cards in the market
+     */
+    /**
+     * Spell cards in the market
+     */
+    /**
+     * Cards clicked
+     */
     private final ArrayList<BaseCard> MonDeck, SpDeck, MonMarket, SpMarket, nowClick;
+    /**
+     * Current player
+     */
     private int currentPlayer;
+    /**
+     * Current turn
+     */
+    /**
+     * Current phrase in the turn
+     */
+    /**
+     * Summation of the clicked cards price
+     */
     private int turnCount, nowPhrase, sumPrice;
+    /**
+     * ArrayList of players
+     */
     private final ArrayList<Player> players;
 
+	/**
+	 * create game GameLogic instance
+	 */
 	private static GameLogic instance = null;
 
+    /**
+     * Constructor of GameLogic
+     * @param initialPlayerCount	number of players
+     */
     private GameLogic(int initialPlayerCount) {
         this.MonDeck = new ArrayList<>();
         this.SpDeck = new ArrayList<>();
@@ -44,6 +89,10 @@ public class GameLogic {
         this.setNowPhrase(1);
     }
 
+    /**
+     * Getter for instance
+     * @return instance
+     */
     public static GameLogic getInstance() {
         if(instance == null) {
             instance = new GameLogic(2);
@@ -51,6 +100,11 @@ public class GameLogic {
         return instance;
     }
 
+    /**
+     *  Getter for instance
+     * @param initialPlayerCount	number of players
+     * @return	instance
+     */
     public static GameLogic getInstance(int initialPlayerCount) {
     	System.out.println("getInstance");
         if(instance == null) {
@@ -59,10 +113,16 @@ public class GameLogic {
         return instance;
     }
 
+    /**
+     * Clear instance
+     */
     public static void clearInstance() {
         instance = null;
     }
 
+    /**
+     * Initialize game such as card decks, player values, etc.
+     */
     public void initGame() {
         // Create the full monster's deck of 20 cards
         // Bird, Golem , Cat and Duck x4
@@ -124,29 +184,56 @@ public class GameLogic {
         System.out.println(SpMarket.size());
     }
 
+    /**
+     * Getter for MonDeck
+     * @return	MonDeck
+     */
     public ArrayList<BaseCard> getMonDeck() {
         return MonDeck;
     }
     
+    /**
+     * Getter for SpDeck
+     * @return	SpDeck
+     */
     public ArrayList<BaseCard> getSpDeck() {
         return SpDeck;
     }
 
+    /**
+     * Getter for currentPlayer (number)
+     * @return	currentPlayer (number)
+     */
     public int getCurrentPlayer() {
     	return currentPlayer;
     }
     
+    /**
+     * Getter for currentPlayer (Player class)
+     * @return	currentPlayer (Player class)
+     */
     public Player getCur() {
     	return getInstance().getPlayers().get(getInstance().getCurrentPlayer());
     }
     
+    /**
+     * Get opposite player (number)
+     * @return	opposite player (number)
+     */
     public int getOppositePlayer() {
     	return Math.floorMod(getCurrentPlayer()+1, 2);
     }
+    /**
+     * Get opposite player (Player class)
+     * @return	opposite player (Player class)
+     */
     public Player getOpp() {
     	return getInstance().getPlayers().get(getInstance().getOppositePlayer());
     }
 
+    /**
+     * change player and add money to the player
+     */
     public void goToNextPlayer() {
     	System.out.println("nextpla");
     	turnCount += 1;
@@ -158,6 +245,9 @@ public class GameLogic {
     	System.out.println("nextpla");
     }
     
+    /**
+     * Change phrase
+     */
     public void goToNextPhrase() {
     	System.out.println("nextcallph");
     	this.setNowPhrase(this.getNowPhrase()%3+1);
@@ -176,38 +266,74 @@ public class GameLogic {
 		((AnimatePane) ((RightGamePane) main.getGameRoot().getChildren().get(2)).getChildren().get(3)).setnormal();
     }
 
+	/**
+	 * Getter for players
+	 * @return	players
+	 */
 	public ArrayList<Player> getPlayers() {
 		return players;
 	}
 
+	/**
+	 * Getter for turnCount
+	 * @return	turnCount
+	 */
 	public int getTurnCount() {
 		return turnCount;
 	}
 
+	/**
+	 * Setter for turnCount
+	 * @param turnCount	current turn
+	 */
 	public void setTurnCount(int turnCount) {
 		this.turnCount = turnCount;
 	}
 
+	/**
+	 * Getter for MonMarket
+	 * @return	MonMarket
+	 */
 	public ArrayList<BaseCard> getMonMarket() {
 		return MonMarket;
 	}
 
+	/**
+	 * Getter for SpMarket
+	 * @return	SpMatket
+	 */
 	public ArrayList<BaseCard> getSpMarket() {
 		return SpMarket;
 	}
 	
+	/**
+	 * Getter for nowClick
+	 * @return	nowClick
+	 */
 	public ArrayList<BaseCard> getnowClick() {
 		return nowClick;
 	}
 
+	/**
+	 * Getter for nowPhrase
+	 * @return	nowPhrase
+	 */
 	public int getNowPhrase() {
 		return nowPhrase;
 	}
 
+	/**
+	 * Setter for nowPhrase
+	 * @param nowPhrase	Current phrase
+	 */
 	public void setNowPhrase(int nowPhrase) {
 		this.nowPhrase = nowPhrase;
 	}
 
+	/**
+	 * Get the text represents each phrase
+	 * @return	Text for each phrase
+	 */
 	public String getPhraseText() {
 		switch (this.getNowPhrase()) {
 	        case 1:
@@ -221,14 +347,25 @@ public class GameLogic {
 		}
 	}
 	
+	/**
+	 * Getter for sumPrice
+	 * @return	sumPrice
+	 */
 	public int getSumPrice() {
 		return sumPrice;
 	}
 
+	/**
+	 * Setter for sumPrice
+	 * @param sumPrice	clicked cards price total
+	 */
 	public void setSumPrice(int sumPrice) {
 		this.sumPrice = sumPrice;
 	}
-
+	
+	/**
+	 * method for calling buying a card function and set the values
+	 */
 	public void buyClick() {
 		this.getCur().buy(getnowClick());
 		this.getnowClick().clear();
@@ -237,6 +374,9 @@ public class GameLogic {
 		((LeftGamePane) main.getGameRoot().getChildren().get(0)).updateStatus();
 	}
 	
+	/**
+	 * method for calling using a card effect function and set the values
+	 */
 	public void useEffClick() {
 		// TODO Auto-generated method stub
 		this.getnowClick().get(0).useEffect();
@@ -245,6 +385,9 @@ public class GameLogic {
 		((LeftGamePane) main.getGameRoot().getChildren().get(0)).updateStatus();
 	}
 
+	/**
+	 * method for attacking function and set the values
+	 */
 	public void AtkClick() {
 		// TODO Auto-generated method stub
 		//nowClick.get(0) Atk with nowClick.get(1)
@@ -274,6 +417,9 @@ public class GameLogic {
 	
 
 	
+	/**
+	 * update cards in the market, fill the cards in the market 
+	 */
 	public void updateMarket() {
     	while(this.getMonMarket().size()<3) {
     		if(this.getMonDeck().size()!=0) {
@@ -293,31 +439,54 @@ public class GameLogic {
     	}
     }
 	
+	/**
+	 * Update animation to attacking animation
+	 * @param txt	text to be showed
+	 */
 	public void updAtkani(String txt) {
 		String gifp = "../gif/Claws.gif";
 		((AnimatePane) ((RightGamePane) main.getGameRoot().getChildren().get(2)).getChildren().get(3)).setupdate(txt, gifp);
 	}
 	
+	/**
+	 * Update animation to card protecting animation
+	 */
 	public void updProtectani() {
 		String gifp = "../gif/protect.gif";
 		((AnimatePane) ((RightGamePane) main.getGameRoot().getChildren().get(2)).getChildren().get(3)).setupdate("Protect!", gifp);
 	}
 	
+	/**
+	 * Update animation to using effect animation
+	 * @param effname	text describes effect
+	 */
 	public void updUseEffani(String effname) {
 		String gifp = "../gif/Star.gif";
 		((AnimatePane) ((RightGamePane) main.getGameRoot().getChildren().get(2)).getChildren().get(3)).setupdate(effname, gifp);
 	}
 	
+	/**
+	 * Update animation to buying a card animation
+	 */
 	public void updBuyani() {
 		String gifp = "../gif/lighting.gif";
 		((AnimatePane) ((RightGamePane) main.getGameRoot().getChildren().get(2)).getChildren().get(3)).setupdate("Summon!", gifp);
 	}
 	
+	/**
+	 * Update animation to selected text
+	 * @param txt text to be showed
+	 */
 	public void updTextani(String txt) {
 		String gifp = "../gif/Loading.gif";
 		((AnimatePane) ((RightGamePane) main.getGameRoot().getChildren().get(2)).getChildren().get(3)).setupdate(txt, gifp);
 	}
 	
+	/**
+	 * Update animation to selected text and animation
+	 * @param txt	text to be showed
+	 * @param gifp	animation image to be showed
+	 */
 	public void updani(String txt, String gifp) {
 		((AnimatePane) ((RightGamePane) main.getGameRoot().getChildren().get(2)).getChildren().get(3)).setupdate(txt, gifp);
 	}

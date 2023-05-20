@@ -20,10 +20,25 @@ import logic.GameLogic;
 import sound.SoundManager;
 import user.Player;
 
+/**
+ * An ending scene pane
+ * @author Petitor
+ *
+ */
 public class EndScene extends VBox{
+	/**
+	 * The text showing in end scene
+	 */
 	Text endText;
+	/**
+	 * Back to home page button
+	 */
 	MainButton backHome;
 	
+	/**
+	 * Constructor for Endscene
+	 * @param player	winner player
+	 */
 	public EndScene(Player player) {
 		// TODO Auto-generated constructor stub
 		super();

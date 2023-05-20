@@ -19,10 +19,37 @@ import javafx.scene.text.Text;
 import logic.GameLogic;
 import sound.SoundManager;
 
+/**
+ * 
+ * A pane showing a pause scene when the pause button is clicked
+ * @author Wishmeluck
+ *
+ */
 public class PausePane extends VBox{
+	/**
+	 * Text included in the pause button
+	 */
+	/**
+	 * Text included in the restart button
+	 */
+	/**
+	 * Text included in the quit button
+	 */
 	Text pauseText, restartText, quitText;
+	/**
+	 * Resume button
+	 */
+	/**
+	 * Restart button
+	 */
+	/**
+	 * Quit button
+	 */
 	SetButton resumeBtn, restartBtn, quitBtn;
 	
+	/**
+	 * Constructor for PausePane
+	 */
 	public PausePane() {
 		// TODO Auto-generated constructor stub
 		super();

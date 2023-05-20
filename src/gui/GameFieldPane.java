@@ -34,20 +34,64 @@ import card.BirdCard;
 import card.MonsterCard;
 import card.SpellCard;
 
+/**
+ * An pane showing the middle part of the gameScene including field and market
+ * @author Petitor
+ *
+ */
 public class GameFieldPane extends VBox {
+	/**
+	 * Monster market cards
+	 */
 	List<ImageView>  MM = new ArrayList<>();
+    /**
+     * Spell market cards
+     */
     List<ImageView>  SM = new ArrayList<>();
+    /**
+     * Player 1 monster cards
+     */
     List<ImageView>  P1M = new ArrayList<>();
+    /**
+     * Texts for player 1 monster card describe power for each
+     */
     List<Label>  P1MT = new ArrayList<>();
+    /**
+     * Player 1 spell cards
+     */
     List<ImageView>  P1S = new ArrayList<>();
+    /**
+     * Texts for player 1 spell card describe power for each
+     */
     List<Label>  P1ST = new ArrayList<>();
+    /**
+     * Player 2 monster cards
+     */
     List<ImageView>  P2M = new ArrayList<>();
+    /**
+     * Texts for player 2 monster card describe power for each
+     */
     List<Label>  P2MT = new ArrayList<>();
+    /**
+     * Player 2 spell cards
+     */
     List<ImageView>  P2S = new ArrayList<>();
+    /**
+     * Texts for player 2 spell card describe power for each
+     */
     List<Label>  P2ST = new ArrayList<>();
 
+	/**
+	 * last clicked card
+	 */
 	BaseCard lastClick = new BirdCard();
+    /**
+     * Image using when the field box don't contain any card
+     */
     Image nocard = new Image(getClass().getResourceAsStream("../img/nocard.jpg"));
+    /**
+     * Constructor for GameFieldPane and initializing part
+     */
     public GameFieldPane() {
         // Monster Market label
     	super();
@@ -256,6 +300,11 @@ public class GameFieldPane extends VBox {
     
     
     
+	/**
+	 * A function called when the card in monster market is clicked , setting values, setting opacity and check if the card can be chosen
+	 * @param e	a MouseEvent
+	 * @param i	the index of monster card in the market that's clicked 
+	 */
 	private void MMClicked(MouseEvent e, int i) {
 		this.setLastClick(GameLogic.getInstance().getMonMarket().get(i));
 		((RightGamePane) main.getGameRoot().getChildren().get(2)).updateCardInfo();
@@ -302,6 +351,11 @@ public class GameFieldPane extends VBox {
 	
 	
 	
+    /**
+     * A function called when the card in Spell market is clicked , setting values, setting opacity and check if the card can be chosen
+     * @param e	a MouseEvent
+     * @param i	the index of Spell card in the market that's clicked 
+     */
     private void SMClicked(MouseEvent e, int i) {
     	this.setLastClick(GameLogic.getInstance().getSpMarket().get(i));
     	((RightGamePane) main.getGameRoot().getChildren().get(2)).updateCardInfo();
@@ -335,6 +389,14 @@ public class GameFieldPane extends VBox {
         ((RightGamePane) main.getGameRoot().getChildren().get(2)).updateCardInfo();
     }
     
+    /**
+     * Check if the card can be chose according to the effect strategy type of the card and the card chosen before
+     * @param e	a MouseEvent
+     * @param i	the index of the card in player p hand
+     * @param p	player who own the clicked card
+     * @param m set to true if clicked card is a monster card otherwise set to false
+     * @return	true if the card can be clicked and false otherwise
+     */
     private boolean checkEffCard(MouseEvent e, int i,int p,boolean m) {
     	if(GameLogic.getInstance().getnowClick().size()==0) {
     		return true;
@@ -377,6 +439,13 @@ public class GameFieldPane extends VBox {
     	return true;
     }
     
+    /**
+     * A function called when the effect card in the field clicked , setting values, setting opacity and check if the card can be chosen
+     * @param e	a MouseEvent
+     * @param i	the index of the card in player p hand
+     * @param p	player who own the clicked card
+     * @param m set to true if clicked card is a monster card otherwise set to false
+     */
     private void EffClicked(MouseEvent e, int i,int p,boolean m) {
     	if(GameLogic.getInstance().getNowPhrase()!=2) return ;
     	if(m && i>=GameLogic.getInstance().getPlayers().get(p).getMonHand().size()) return;
@@ -412,6 +481,13 @@ public class GameFieldPane extends VBox {
             GameLogic.getInstance().getnowClick().remove(nowCard);
         }
     }
+    /**
+      * A function called when the card in the field clicked, it will call other functions such as AtkClicked, EffClicked, etc.
+     * @param e	a MouseEvent
+     * @param i	the index of the card in player p hand
+     * @param p	player who own the clicked card
+     * @param m set to true if clicked card is a monster card otherwise set to false
+     */
     private void FieldClicked(MouseEvent e, int i, int p, boolean m) {
     	if(m && i>=GameLogic.getInstance().getPlayers().get(p).getMonHand().size()) return;
     	if(!m && i>=GameLogic.getInstance().getPlayers().get(p).getSpHand().size()) return;
@@ -430,6 +506,12 @@ public class GameFieldPane extends VBox {
     	((RightGamePane) main.getGameRoot().getChildren().get(2)).updateCardInfo();
     }
     
+    /**
+     * Update monster card image showed according to its status
+     * @param e	a MouseEvent
+     * @param i	the index of the card in player p hand
+     * @param p	player who own the clicked card
+     */
     private void UpdStatus(MouseEvent e, int i,int p) {
     	if(GameLogic.getInstance().getNowPhrase()!=1) return ;
     	if(GameLogic.getInstance().getCurrentPlayer()!=p) return;
@@ -445,6 +527,12 @@ public class GameFieldPane extends VBox {
         }
     }
     
+    /**
+     * A function called when the effect card in the field clicked , setting values, setting opacity and check if the card can be chosen
+     * @param e	a MouseEvent
+     * @param i	the index of the card in player p hand
+     * @param p	player who own the clicked card
+     */
     private void AtkClicked(MouseEvent e, int i, int p) {
     	if(GameLogic.getInstance().getNowPhrase()!=3) return ;
     	if(GameLogic.getInstance().getnowClick().size()>=1) {
@@ -476,6 +564,9 @@ public class GameFieldPane extends VBox {
             }
 	}
     
+    /**
+     * Update card field images and texts
+     */
     public void updateField() {
     	String nStatus;
         // Update Monster Market images
@@ -553,6 +644,10 @@ public class GameFieldPane extends VBox {
         }
     }
     
+    /**
+     * Getter for lastClick
+     * @return lastClick
+     */
     public BaseCard getLastClick() {
 		return lastClick;
 	}
@@ -560,6 +655,10 @@ public class GameFieldPane extends VBox {
 
 
 
+	/**
+	 * Setter for lastClick
+	 * @param lastClick
+	 */
 	public void setLastClick(BaseCard lastClick) {
 		this.lastClick = lastClick;
 	}

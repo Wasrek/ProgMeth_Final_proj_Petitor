@@ -13,8 +13,11 @@ import javafx.scene.layout.CornerRadii;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
 
+
 /**
  * A button for using in the main menu
+ * @author Wishmeluck
+ *
  */
 public class MainButton extends Button {
 	/**
@@ -23,7 +26,7 @@ public class MainButton extends Button {
 	private String buttonName;
 
 	/**
-	 * MenuBpane Main Constructor
+	 * Constructor for MainButton
 	 * 
 	 * @param buttonName button's name
 	 */
@@ -55,7 +58,7 @@ public class MainButton extends Button {
 	}
 
 	/**
-	 * MenuBpane Main Constructor
+	 * Setting hover
 	 * 
 	 * @param hoveringStatus hovering status
 	 */

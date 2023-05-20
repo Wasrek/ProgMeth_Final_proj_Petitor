@@ -26,12 +26,15 @@ import javafx.scene.text.TextAlignment;
 import logic.GameLogic;
 import sound.SoundManager;
 
+
 /**
  * Main menu pane
+ * @author Wishmeluck
+ *
  */
 public class MenuPane extends BorderPane {
 	/**
-	 * MenuBpane Main Constructor
+	 * MenuPane Constructor
 	 */
 	public MenuPane() {
 		super();

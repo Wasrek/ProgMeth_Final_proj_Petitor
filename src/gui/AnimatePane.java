@@ -22,10 +22,14 @@ import javafx.util.Duration;
 import logic.GameLogic;
 
 /**
+ * A pane on the right side that include animation showing informations
  * @author Petitor
  *
  */
 public class AnimatePane extends StackPane{
+	/**
+	 * Constructor for AnimatePane
+	 */
 	public AnimatePane(){
 		super();
 		this.setMinHeight(170);
@@ -51,6 +55,9 @@ public class AnimatePane extends StackPane{
 	    this.setAlignment(javafx.geometry.Pos.CENTER);
 	}
 	
+	/**
+	 * set the animation to normal phrase animation (Phrase information)
+	 */
 	public void setnormal() {
 		String nmtext;
 		if(GameLogic.getInstance().getNowPhrase()==1) {
@@ -84,6 +91,11 @@ public class AnimatePane extends StackPane{
 				);
 	}
 	
+	/**
+	 * Set animation fading in and out
+	 * @param str	string for the description animation contained
+	 * @param gifp	animation picture
+	 */
 	public void setupdate(String str, String gifp) {
 		System.out.println("upd eff ani");
 		Platform.runLater(
@@ -137,6 +149,10 @@ public class AnimatePane extends StackPane{
 				  }
 				);
 	}
+	/**
+	 * Getter for VBox pane in the pane containing animation
+	 * @return	VBox pane containing animation
+	 */
 	private VBox getvBox() {
 		return (VBox) this.getChildren().get(0);
 	}

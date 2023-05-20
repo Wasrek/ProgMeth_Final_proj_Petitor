@@ -33,11 +33,26 @@ import javafx.animation.FadeTransition;
 import javafx.animation.PathTransition;
 import javafx.application.Platform;
 
+/**
+ * 
+ * A pane showing on the right part of the gameScene
+ * @author Petitor
+ *
+ */
 public class RightGamePane extends VBox{
 	
+	/**
+	 * the choose button contain functions depends on current phrase
+	 */
 	private MainButton chooseButton;
+	/**
+	 * Cards information pane
+	 */
 	private InfoPane monInfo;
 	
+	/**
+	 * Constructor for RightGamePane
+	 */
 	public RightGamePane() {
 		super();
 		this.setBackground(new Background(new BackgroundFill(Color.BLACK, new CornerRadii(0), getInsets())));
@@ -105,6 +120,10 @@ public class RightGamePane extends VBox{
         
 	}
 	
+	/**
+	 * A method calling functions when the choose button is clicked 
+	 * @param e	a MouseEvent
+	 */
 	private void chooseClicked(MouseEvent e) {
 		SoundManager.playSound("audio/select-click.mp3");
 		int nPhrase = GameLogic.getInstance().getNowPhrase();
@@ -123,12 +142,19 @@ public class RightGamePane extends VBox{
 		}
 	}
 	
+	/**
+	 * A method calling functions when the next button is clicked, changing phrase.
+	 * @param e	a MouseEvent
+	 */
 	private void nextClicked(MouseEvent e) {
 		SoundManager.playSound("audio/select-click.mp3");
 		System.out.println("nextcall");
 		GameLogic.getInstance().goToNextPhrase();
 	}
 
+	/**
+	 * Update RightGamePane information showed
+	 */
 	public void updateRightPane() {
 		String curmoney = " / "+GameLogic.getInstance().getCur().getMoney();
 		((Labeled) this.getChildren().get(2)).setText("Price "+Integer.toString(GameLogic.getInstance().getSumPrice())+curmoney);
@@ -141,6 +167,9 @@ public class RightGamePane extends VBox{
 		chooseButton.setText(GameLogic.getInstance().getPhraseText());
 	}
 
+	/**
+	 * Update Card information showed
+	 */
 	public void updateCardInfo() {
 //		Platform.runLater(
 //				  () -> {
@@ -165,55 +194,4 @@ public class RightGamePane extends VBox{
 		System.out.println("1");
 	}
 	
-//	public void playNotiPane() {
-//		Platform.runLater(
-//				  () -> {
-//					  String updgif = "../gif/Loading.gif";
-//					  ((AnimatePane) this.getChildren().get(3)).setupdate("yeah",updgif);
-//						FadeTransition fd = new FadeTransition();  
-//						
-//						//set the duration for the Fade transition   
-//						fd.setDuration(Duration.millis(1000));   
-//						fd.setFromValue(0);  
-//						fd.setToValue(1);  
-//						//set the cycle count for the Fade transition   
-////			        	    fd.setCycleCount(3);  
-//						  
-//						//the transition will set to be auto reversed by setting this to true   
-//						//set Circle as the node onto which the transition will be applied  
-//						fd.setNode(this.getChildren().get(3));  
-//						  
-//						
-//						FadeTransition fdo = new FadeTransition();  
-//						
-//						//set the duration for the Fade transition   
-//						fdo.setDuration(Duration.millis(3000));   
-//						fdo.setFromValue(1);  
-//						fdo.setToValue(0);
-//						  
-//						//the transition will set to be auto reversed by setting this to true   
-//						//set Circle as the node onto which the transition will be applied  
-//						fdo.setNode(this.getChildren().get(3));  
-//						  
-//						  
-//						//playing the transition   
-//						fd.play();  
-//						fd.setOnFinished(e -> {
-//							try {
-//								fdo.play();
-//							} catch (Exception e1) {
-//								e1.printStackTrace();
-//							}
-////			        			new MenuBpane();
-//						});
-//						fdo.setOnFinished(e -> {
-//							try {
-//								((AnimatePane) this.getChildren().get(3)).setnormal();
-//							} catch (Exception e1) {
-//								e1.printStackTrace();
-//							}
-//						});
-//				  }
-//				);
-//	}
 }
