@@ -17,7 +17,7 @@ public class DuckCard extends MonsterCard {
 	@Override
 	public String performEffect() {
 		// TODO Auto-generated method stub
-		return "Sacred Wave";
+		return "Sacred Wave (Power-up team attack)";
 	}
 
 	@Override

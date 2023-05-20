@@ -19,7 +19,7 @@ public class KingCard extends MonsterCard {
 	@Override
 	public String performEffect() {
 		// TODO Auto-generated method stub
-		return "Brainwash";
+		return "Brainwash (Control enemy monster)";
 	}
 
 	@Override

@@ -17,7 +17,7 @@ public class GolemCard extends MonsterCard {
 	@Override
 	public String performEffect() {
 		// TODO Auto-generated method stub
-		return "Mha Mhoo";
+		return "Mha Mhoo (Power-up teammates defend)";
 	}
 
 	@Override

@@ -21,7 +21,7 @@ public class BirdCard extends MonsterCard {
 	@Override
 	public String performEffect() {
 		// TODO Auto-generated method stub
-		return "Nok Sorn Khon";
+		return "Nok Sorn Khon (50% chance power-up)";
 	}
 
 	@Override

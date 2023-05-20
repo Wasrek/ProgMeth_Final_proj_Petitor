@@ -17,7 +17,7 @@ public class CatCard extends MonsterCard {
 	@Override
 	public String performEffect() {
 		// TODO Auto-generated method stub
-		return "Death Claw";
+		return "Death Claw (recieve 2 tokens)";
 	}
 
 	@Override

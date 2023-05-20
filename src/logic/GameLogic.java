@@ -310,7 +310,7 @@ public class GameLogic {
 	
 	public void updBuyani() {
 		String gifp = "../gif/lighting.gif";
-		((AnimatePane) ((RightGamePane) main.getGameRoot().getChildren().get(2)).getChildren().get(3)).setupdate("Field added!", gifp);
+		((AnimatePane) ((RightGamePane) main.getGameRoot().getChildren().get(2)).getChildren().get(3)).setupdate("Summon!", gifp);
 	}
 	
 	public void updTextani(String txt) {

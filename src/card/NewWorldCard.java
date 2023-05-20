@@ -16,7 +16,7 @@ public class NewWorldCard extends SpellCard{
 
 	@Override
 	public String toString() {
-		return "New World";
+		return "New World (Clear market)";
 	}
 	
 	@Override
