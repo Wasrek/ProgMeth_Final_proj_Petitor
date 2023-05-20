@@ -62,7 +62,7 @@ public class KingCard extends MonsterCard {
 	@Override
 	public boolean isAttackable(BaseCard card) {
 		// TODO Auto-generated method stub
-		if (this.getStatus() && (this.getLastAtk() != game.getTurnCount())) {
+		if (this.getStatus() && (this.getSummonedTurn() != game.getTurnCount()) && (this.getLastAtk() != game.getTurnCount())) {
 			if (game.getTurnCount() >= this.getLastAtk() + 4) {
 				return true;						
 			}			
@@ -79,7 +79,6 @@ public class KingCard extends MonsterCard {
 		return false;	
 	}
 
-	@Override
 	public void useEffect() {
 		// TODO Auto-generated method stub
 		if (this.isEffectable()) {
@@ -87,6 +86,7 @@ public class KingCard extends MonsterCard {
 			game.updUseEffani(this.performEffect());
 			this.setLastUsedTurn(game.getTurnCount());
 			game.getCur().getMonHand().add(game.getnowClick().get(1));
+			((MonsterCard) game.getnowClick().get(1)).setSummonedTurn(GameLogic.getInstance().getTurnCount());
 			game.getOpp().getMonHand().remove(game.getnowClick().get(1));
 		}
 	}
@@ -95,7 +95,7 @@ public class KingCard extends MonsterCard {
 	public boolean isEffectable() {
 		// TODO Auto-generated method stub
 		if (game.getTurnCount() != this.getLastUsedTurn()) {
-			if (game.getCur().getMonHand().size() < 3) {
+			if ((game.getCur().getMonHand().size() < game.getOpp().getMonHand().size()) && (game.getCur().getMonHand().size() < 3)) {
 				return true;			
 			}
 		}
