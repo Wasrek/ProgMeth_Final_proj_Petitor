@@ -1,7 +1,7 @@
 package card;
 
 /**
- * interface for cards that can attack other monster in attack phrase
+ * interface for the cards that can attack other monster in attack phrase
  * @author Petitor
  *
  */
