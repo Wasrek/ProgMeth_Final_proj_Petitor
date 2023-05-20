@@ -32,7 +32,7 @@ public class InfoPane extends VBox{
         Label effLB = new Label("Eff :");
         Image initimg = new Image(getClass().getResourceAsStream("../gif/yellow.gif"));
         ImageView img = new ImageView(initimg);
-        img.setFitHeight(256);
+        img.setFitHeight(400);
         img.setFitWidth(256);
         img.setPreserveRatio(true);
         

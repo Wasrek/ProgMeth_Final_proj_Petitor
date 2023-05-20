@@ -238,7 +238,7 @@ public class GameFieldPane extends VBox {
 
         HBox SM_TextHBox = new HBox(SM_Text);
         SM_TextHBox.setPrefSize(790, 25);
-        SM_TextHBox.setPadding(new Insets(0, 0, 6, 0));
+        SM_TextHBox.setPadding(new Insets(6, 0, 0, 0));
         SM_TextHBox.setAlignment(javafx.geometry.Pos.TOP_CENTER);
 
         
